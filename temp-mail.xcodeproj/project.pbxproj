@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C3DA2EF29964CE300449A18 /* NetworkingServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3DA2EE29964CE300449A18 /* NetworkingServiceProtocol.swift */; };
+		5C3DA2F12996981100449A18 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3DA2F02996981100449A18 /* AuthService.swift */; };
 		5CA91A962995108E0047F36D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA91A952995108E0047F36D /* AppDelegate.swift */; };
 		5CA91A982995108E0047F36D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA91A972995108E0047F36D /* SceneDelegate.swift */; };
 		5CA91A9A2995108E0047F36D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA91A992995108E0047F36D /* ViewController.swift */; };
@@ -14,9 +16,13 @@
 		5CA91AA22995108F0047F36D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CA91AA02995108F0047F36D /* LaunchScreen.storyboard */; };
 		5CA91AAA299513B90047F36D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA91AA9299513B90047F36D /* Message.swift */; };
 		5CA91AAC299517390047F36D /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA91AAB299517390047F36D /* MessageCell.swift */; };
+		B8F2944560C8D7DBD9054355 /* Pods_temp_mail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5CEF72C7325661C64127699 /* Pods_temp_mail.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32FE4E4D53D1FF6360A78DAA /* Pods-temp-mail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-temp-mail.release.xcconfig"; path = "Target Support Files/Pods-temp-mail/Pods-temp-mail.release.xcconfig"; sourceTree = "<group>"; };
+		5C3DA2EE29964CE300449A18 /* NetworkingServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingServiceProtocol.swift; sourceTree = "<group>"; };
+		5C3DA2F02996981100449A18 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		5CA91A922995108E0047F36D /* temp-mail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "temp-mail.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CA91A952995108E0047F36D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5CA91A972995108E0047F36D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +32,8 @@
 		5CA91AA32995108F0047F36D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5CA91AA9299513B90047F36D /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		5CA91AAB299517390047F36D /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		A5CEF72C7325661C64127699 /* Pods_temp_mail.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_temp_mail.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAB909E913C5B6B4C1D13381 /* Pods-temp-mail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-temp-mail.debug.xcconfig"; path = "Target Support Files/Pods-temp-mail/Pods-temp-mail.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +41,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8F2944560C8D7DBD9054355 /* Pods_temp_mail.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		491B41834D9596C460CB9F19 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A5CEF72C7325661C64127699 /* Pods_temp_mail.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5C3DA2F22996982600449A18 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				5C3DA2F02996981100449A18 /* AuthService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		5CA91A892995108E0047F36D = {
 			isa = PBXGroup;
 			children = (
 				5CA91A942995108E0047F36D /* temp-mail */,
 				5CA91A932995108E0047F36D /* Products */,
+				61BAC1754AC3817DF018DCA4 /* Pods */,
+				491B41834D9596C460CB9F19 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,14 +87,25 @@
 			children = (
 				5CA91A952995108E0047F36D /* AppDelegate.swift */,
 				5CA91A972995108E0047F36D /* SceneDelegate.swift */,
+				5C3DA2F22996982600449A18 /* Services */,
 				5CA91A992995108E0047F36D /* ViewController.swift */,
 				5CA91AAB299517390047F36D /* MessageCell.swift */,
+				5C3DA2EE29964CE300449A18 /* NetworkingServiceProtocol.swift */,
 				5CA91AA9299513B90047F36D /* Message.swift */,
 				5CA91A9E2995108F0047F36D /* Assets.xcassets */,
 				5CA91AA02995108F0047F36D /* LaunchScreen.storyboard */,
 				5CA91AA32995108F0047F36D /* Info.plist */,
 			);
 			path = "temp-mail";
+			sourceTree = "<group>";
+		};
+		61BAC1754AC3817DF018DCA4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EAB909E913C5B6B4C1D13381 /* Pods-temp-mail.debug.xcconfig */,
+				32FE4E4D53D1FF6360A78DAA /* Pods-temp-mail.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,9 +115,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5CA91AA62995108F0047F36D /* Build configuration list for PBXNativeTarget "temp-mail" */;
 			buildPhases = (
+				F43EE9C436A131A0745FA45A /* [CP] Check Pods Manifest.lock */,
 				5CA91A8E2995108E0047F36D /* Sources */,
 				5CA91A8F2995108E0047F36D /* Frameworks */,
 				5CA91A902995108E0047F36D /* Resources */,
+				6645F4DAA5B0BA55BC1CBAEA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -135,6 +175,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6645F4DAA5B0BA55BC1CBAEA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-temp-mail/Pods-temp-mail-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-temp-mail/Pods-temp-mail-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-temp-mail/Pods-temp-mail-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F43EE9C436A131A0745FA45A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-temp-mail-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5CA91A8E2995108E0047F36D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -143,8 +225,10 @@
 				5CA91A9A2995108E0047F36D /* ViewController.swift in Sources */,
 				5CA91AAC299517390047F36D /* MessageCell.swift in Sources */,
 				5CA91AAA299513B90047F36D /* Message.swift in Sources */,
+				5C3DA2EF29964CE300449A18 /* NetworkingServiceProtocol.swift in Sources */,
 				5CA91A962995108E0047F36D /* AppDelegate.swift in Sources */,
 				5CA91A982995108E0047F36D /* SceneDelegate.swift in Sources */,
+				5C3DA2F12996981100449A18 /* AuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +362,7 @@
 		};
 		5CA91AA72995108F0047F36D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EAB909E913C5B6B4C1D13381 /* Pods-temp-mail.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -305,6 +390,7 @@
 		};
 		5CA91AA82995108F0047F36D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 32FE4E4D53D1FF6360A78DAA /* Pods-temp-mail.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
