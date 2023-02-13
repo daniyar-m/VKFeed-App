@@ -15,18 +15,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, AuthServiceDelegate {
     
     static func shared() -> SceneDelegate {
         let scene = UIApplication.shared.connectedScenes.first
-        let sceneDelegate: SceneDelegate = (((scene?.delegate as? SceneDelegate)!))
-        return sceneDelegate
+        let sd : SceneDelegate = ((scene?.delegate as? SceneDelegate)!)
+        return sd
     }
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = AuthViewController()
-        window?.makeKeyAndVisible()
         authService = AuthService()
         authService?.delegate = self
+        window?.rootViewController = AuthViewController()
+        window?.makeKeyAndVisible()
     }
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
@@ -65,13 +65,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, AuthServiceDelegate {
     
     // MARK: - AuthServiceDelegate
 
-    func authServiceShouldShow(viewController: UIViewController) {
+    func authServiceShouldShow(_ viewController: UIViewController) {
         print(#function)
+        window?.rootViewController?.present(viewController, animated: true)
     }
     
-    func authServiceSignIn() {
+    func authServiceSignIn() { 
         print(#function)
-
+        window?.rootViewController = UINavigationController(rootViewController: FeedViewController())
     }
     
     func authServiceSignInFailed() {

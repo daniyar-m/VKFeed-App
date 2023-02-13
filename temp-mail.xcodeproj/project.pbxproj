@@ -12,7 +12,7 @@
 		5C3DA2F12996981100449A18 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3DA2F02996981100449A18 /* AuthService.swift */; };
 		5CA91A962995108E0047F36D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA91A952995108E0047F36D /* AppDelegate.swift */; };
 		5CA91A982995108E0047F36D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA91A972995108E0047F36D /* SceneDelegate.swift */; };
-		5CA91A9A2995108E0047F36D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA91A992995108E0047F36D /* ViewController.swift */; };
+		5CA91A9A2995108E0047F36D /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA91A992995108E0047F36D /* FeedViewController.swift */; };
 		5CA91A9F2995108F0047F36D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CA91A9E2995108F0047F36D /* Assets.xcassets */; };
 		5CA91AA22995108F0047F36D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CA91AA02995108F0047F36D /* LaunchScreen.storyboard */; };
 		5CA91AAA299513B90047F36D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA91AA9299513B90047F36D /* Message.swift */; };
@@ -28,7 +28,7 @@
 		5CA91A922995108E0047F36D /* temp-mail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "temp-mail.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CA91A952995108E0047F36D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5CA91A972995108E0047F36D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5CA91A992995108E0047F36D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5CA91A992995108E0047F36D /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		5CA91A9E2995108F0047F36D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5CA91AA12995108F0047F36D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5CA91AA32995108F0047F36D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -90,7 +90,7 @@
 				5CA91A952995108E0047F36D /* AppDelegate.swift */,
 				5CA91A972995108E0047F36D /* SceneDelegate.swift */,
 				5C3DA2F22996982600449A18 /* Services */,
-				5CA91A992995108E0047F36D /* ViewController.swift */,
+				5CA91A992995108E0047F36D /* FeedViewController.swift */,
 				5C24AA99299A34F000CA4646 /* AuthViewController.swift */,
 				5CA91AAB299517390047F36D /* MessageCell.swift */,
 				5C3DA2EE29964CE300449A18 /* NetworkingServiceProtocol.swift */,
@@ -225,7 +225,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5CA91A9A2995108E0047F36D /* ViewController.swift in Sources */,
+				5CA91A9A2995108E0047F36D /* FeedViewController.swift in Sources */,
 				5CA91AAC299517390047F36D /* MessageCell.swift in Sources */,
 				5CA91AAA299513B90047F36D /* Message.swift in Sources */,
 				5C3DA2EF29964CE300449A18 /* NetworkingServiceProtocol.swift in Sources */,

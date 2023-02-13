@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class FeedViewController: UIViewController {
     
     let messages: [Message] = [Message(timestamp: Date.distantPast, sender: "Dan", title: "Hello", body: "Heelo world"),
                                Message(timestamp: Date.distantPast, sender: "Mary", title: "How r u?", body: "test"),
@@ -51,7 +51,7 @@ class ViewController: UIViewController {
 
 }
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
+extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         messages.count

@@ -20,6 +20,8 @@ final class AuthViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        authService = SceneDelegate.shared().authService
+        print(authService)
         view.backgroundColor = .white
         view.addSubview(loginButton)
         NSLayoutConstraint.activate([
@@ -28,8 +30,6 @@ final class AuthViewController: UIViewController {
             loginButton.widthAnchor.constraint(equalToConstant: 200),
             loginButton.heightAnchor.constraint(equalToConstant: 60)
         ])
-        authService = SceneDelegate.shared().authService
-        print(authService)
     }
     
     @objc private func loginButtonTapped() {
