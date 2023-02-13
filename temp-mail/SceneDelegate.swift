@@ -8,17 +8,25 @@
 import UIKit
 import VK_ios_sdk
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+class SceneDelegate: UIResponder, UIWindowSceneDelegate, AuthServiceDelegate {
 
     var window: UIWindow?
-
+    var authService: AuthService!
+    
+    static func shared() -> SceneDelegate {
+        let scene = UIApplication.shared.connectedScenes.first
+        let sceneDelegate: SceneDelegate = (((scene?.delegate as? SceneDelegate)!))
+        return sceneDelegate
+    }
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = ViewController()
+        window?.rootViewController = AuthViewController()
         window?.makeKeyAndVisible()
+        authService = AuthService()
+        authService?.delegate = self
     }
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
@@ -54,7 +62,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
+    
+    // MARK: - AuthServiceDelegate
 
+    func authServiceShouldShow(viewController: UIViewController) {
+        print(#function)
+    }
+    
+    func authServiceSignIn() {
+        print(#function)
 
+    }
+    
+    func authServiceSignInFailed() {
+        print(#function)
+
+    }
 }
 

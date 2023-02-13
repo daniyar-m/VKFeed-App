@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C24AA9A299A34F000CA4646 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C24AA99299A34F000CA4646 /* AuthViewController.swift */; };
 		5C3DA2EF29964CE300449A18 /* NetworkingServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3DA2EE29964CE300449A18 /* NetworkingServiceProtocol.swift */; };
 		5C3DA2F12996981100449A18 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3DA2F02996981100449A18 /* AuthService.swift */; };
 		5CA91A962995108E0047F36D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA91A952995108E0047F36D /* AppDelegate.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		32FE4E4D53D1FF6360A78DAA /* Pods-temp-mail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-temp-mail.release.xcconfig"; path = "Target Support Files/Pods-temp-mail/Pods-temp-mail.release.xcconfig"; sourceTree = "<group>"; };
+		5C24AA99299A34F000CA4646 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		5C3DA2EE29964CE300449A18 /* NetworkingServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingServiceProtocol.swift; sourceTree = "<group>"; };
 		5C3DA2F02996981100449A18 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		5CA91A922995108E0047F36D /* temp-mail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "temp-mail.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,6 +91,7 @@
 				5CA91A972995108E0047F36D /* SceneDelegate.swift */,
 				5C3DA2F22996982600449A18 /* Services */,
 				5CA91A992995108E0047F36D /* ViewController.swift */,
+				5C24AA99299A34F000CA4646 /* AuthViewController.swift */,
 				5CA91AAB299517390047F36D /* MessageCell.swift */,
 				5C3DA2EE29964CE300449A18 /* NetworkingServiceProtocol.swift */,
 				5CA91AA9299513B90047F36D /* Message.swift */,
@@ -226,6 +229,7 @@
 				5CA91AAC299517390047F36D /* MessageCell.swift in Sources */,
 				5CA91AAA299513B90047F36D /* Message.swift in Sources */,
 				5C3DA2EF29964CE300449A18 /* NetworkingServiceProtocol.swift in Sources */,
+				5C24AA9A299A34F000CA4646 /* AuthViewController.swift in Sources */,
 				5CA91A962995108E0047F36D /* AppDelegate.swift in Sources */,
 				5CA91A982995108E0047F36D /* SceneDelegate.swift in Sources */,
 				5C3DA2F12996981100449A18 /* AuthService.swift in Sources */,
