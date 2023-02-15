@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5C24AA9A299A34F000CA4646 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C24AA99299A34F000CA4646 /* AuthViewController.swift */; };
+		5C24AA9F299A555B00CA4646 /* DefaultNetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C24AA9E299A555B00CA4646 /* DefaultNetworkingService.swift */; };
+		5C24AAA1299A571900CA4646 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C24AAA0299A571900CA4646 /* API.swift */; };
 		5C3DA2EF29964CE300449A18 /* NetworkingServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3DA2EE29964CE300449A18 /* NetworkingServiceProtocol.swift */; };
 		5C3DA2F12996981100449A18 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3DA2F02996981100449A18 /* AuthService.swift */; };
 		5CA91A962995108E0047F36D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA91A952995108E0047F36D /* AppDelegate.swift */; };
@@ -23,6 +25,8 @@
 /* Begin PBXFileReference section */
 		32FE4E4D53D1FF6360A78DAA /* Pods-temp-mail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-temp-mail.release.xcconfig"; path = "Target Support Files/Pods-temp-mail/Pods-temp-mail.release.xcconfig"; sourceTree = "<group>"; };
 		5C24AA99299A34F000CA4646 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		5C24AA9E299A555B00CA4646 /* DefaultNetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNetworkingService.swift; sourceTree = "<group>"; };
+		5C24AAA0299A571900CA4646 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		5C3DA2EE29964CE300449A18 /* NetworkingServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingServiceProtocol.swift; sourceTree = "<group>"; };
 		5C3DA2F02996981100449A18 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		5CA91A922995108E0047F36D /* temp-mail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "temp-mail.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,10 +62,31 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5C24AA9B299A550000CA4646 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5CA91A992995108E0047F36D /* FeedViewController.swift */,
+				5C24AA99299A34F000CA4646 /* AuthViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		5C24AA9C299A551B00CA4646 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5CA91AAB299517390047F36D /* MessageCell.swift */,
+				5CA91AA02995108F0047F36D /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		5C3DA2F22996982600449A18 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				5C3DA2F02996981100449A18 /* AuthService.swift */,
+				5C3DA2EE29964CE300449A18 /* NetworkingServiceProtocol.swift */,
+				5C24AA9E299A555B00CA4646 /* DefaultNetworkingService.swift */,
+				5C24AAA0299A571900CA4646 /* API.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -90,13 +115,10 @@
 				5CA91A952995108E0047F36D /* AppDelegate.swift */,
 				5CA91A972995108E0047F36D /* SceneDelegate.swift */,
 				5C3DA2F22996982600449A18 /* Services */,
-				5CA91A992995108E0047F36D /* FeedViewController.swift */,
-				5C24AA99299A34F000CA4646 /* AuthViewController.swift */,
-				5CA91AAB299517390047F36D /* MessageCell.swift */,
-				5C3DA2EE29964CE300449A18 /* NetworkingServiceProtocol.swift */,
+				5C24AA9B299A550000CA4646 /* Controllers */,
+				5C24AA9C299A551B00CA4646 /* Views */,
 				5CA91AA9299513B90047F36D /* Message.swift */,
 				5CA91A9E2995108F0047F36D /* Assets.xcassets */,
-				5CA91AA02995108F0047F36D /* LaunchScreen.storyboard */,
 				5CA91AA32995108F0047F36D /* Info.plist */,
 			);
 			path = "temp-mail";
@@ -229,7 +251,9 @@
 				5CA91AAC299517390047F36D /* MessageCell.swift in Sources */,
 				5CA91AAA299513B90047F36D /* Message.swift in Sources */,
 				5C3DA2EF29964CE300449A18 /* NetworkingServiceProtocol.swift in Sources */,
+				5C24AAA1299A571900CA4646 /* API.swift in Sources */,
 				5C24AA9A299A34F000CA4646 /* AuthViewController.swift in Sources */,
+				5C24AA9F299A555B00CA4646 /* DefaultNetworkingService.swift in Sources */,
 				5CA91A962995108E0047F36D /* AppDelegate.swift in Sources */,
 				5CA91A982995108E0047F36D /* SceneDelegate.swift in Sources */,
 				5C3DA2F12996981100449A18 /* AuthService.swift in Sources */,

@@ -9,6 +9,8 @@ import UIKit
 
 class FeedViewController: UIViewController {
     
+    private let defaultNetworkingService = DefaultNetworkingService()
+    
     let messages: [Message] = [Message(timestamp: Date.distantPast, sender: "Dan", title: "Hello", body: "Heelo world"),
                                Message(timestamp: Date.distantPast, sender: "Mary", title: "How r u?", body: "test"),
                                Message(timestamp: Date.distantPast, sender: "Tim", title: "u good", body: "test"),
@@ -29,6 +31,7 @@ class FeedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//        request
         view.backgroundColor = .red
         view.addSubview(messagesTableView)
         NSLayoutConstraint.activate([

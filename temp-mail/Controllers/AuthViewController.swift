@@ -21,7 +21,6 @@ final class AuthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         authService = SceneDelegate.shared().authService
-        print(authService)
         view.backgroundColor = .white
         view.addSubview(loginButton)
         NSLayoutConstraint.activate([
