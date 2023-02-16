@@ -6,7 +6,7 @@ final class DefaultNetworkingService: NetworkingService {
     
     private let authService: AuthService
     
-    init(authService:AuthService = SceneDelegate.shared().authService) {
+    init(authService: AuthService = SceneDelegate.shared().authService) {
         self.authService = authService
     }
     
@@ -16,16 +16,18 @@ final class DefaultNetworkingService: NetworkingService {
         allParams["access_token"] = token
         allParams["v"] = API.version
         guard let url = generateURL(from: path, params: allParams) else { return }
-        print(url)
-        
-        let session = URLSession(configuration: .default)
         let request = URLRequest(url: url)
-        let task = session.dataTask(with: request) { data, response, error in
+        let task = createDataTask(from: request, completion: completion)
+        task.resume()
+        print(url)
+    }
+    
+    private func createDataTask(from request: URLRequest, completion: @escaping (Data?, Error?) -> Void) -> URLSessionDataTask {
+        return URLSession.shared.dataTask(with: request) { data, response, error in
             DispatchQueue.main.async {
                 completion(data, error)
             }
         }
-        task.resume()
     }
     
     private func generateURL(from path: String, params: [String: String]) -> URL? {

@@ -9,18 +9,7 @@ import UIKit
 
 class FeedViewController: UIViewController {
     
-    private let defaultNetworkingService = DefaultNetworkingService()
-    
-    let messages: [Message] = [Message(timestamp: Date.distantPast, sender: "Dan", title: "Hello", body: "Heelo world"),
-                               Message(timestamp: Date.distantPast, sender: "Mary", title: "How r u?", body: "test"),
-                               Message(timestamp: Date.distantPast, sender: "Tim", title: "u good", body: "test"),
-                               Message(timestamp: Date.distantPast, sender: "Dan", title: "testing", body: "test"),
-                               Message(timestamp: Date.distantPast, sender: "Mary", title: "another test", body: "test"),
-                               Message(timestamp: Date.distantPast, sender: "Tim", title: "QWERTY", body: "test"),
-                               Message(timestamp: Date.distantPast, sender: "Dan", title: "1234565678987654323456", body: "test"),
-                               Message(timestamp: Date.distantPast, sender: "Mary", title: "Long title: qwertyui opasdfg hjkl zx cvbnm,", body: "test"),
-                               Message(timestamp: Date.distantPast, sender: "Tim", title: "long body", body: "A timestamp is that which is not readable form when you get it from the server or from other sources. So while to show some event, date or time in your application you have to make a timestamp into the readable form, you can make it readable form using these objects Date, Calendar, DateFormatter and use many more."),
-                               Message(timestamp: Date.distantPast, sender: "Dan", title: "BYE!", body: "test")]
+    private let defaultNetworkingService: NetworkingService = DefaultNetworkingService()
     
     private let messagesTableView: UITableView = {
         let view = UITableView()
@@ -31,7 +20,17 @@ class FeedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        request
+        
+        let params = ["filters": "post,photo"]
+        defaultNetworkingService.request(path: API.newsFeed, params: params) { data, error in
+            if let error {
+                print("Received error while requesting data: \(error.localizedDescription)")
+            }
+            guard let data else { return }
+            let json = try? JSONSerialization.jsonObject(with: data)
+            print("JSON: \(json)")
+        }
+        
         view.backgroundColor = .red
         view.addSubview(messagesTableView)
         NSLayoutConstraint.activate([
@@ -57,12 +56,12 @@ class FeedViewController: UIViewController {
 extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        messages.count
+        10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = messagesTableView.dequeueReusableCell(withIdentifier: MessageCell.identifier, for: indexPath) as? MessageCell else { return UITableViewCell() }
-        cell.configureCell(message: messages[indexPath.row])
+        cell.configureCell(message: Message(timestamp: Date.now, sender: "danikm@yandex.ru", title: "Hello", body: "mazafaka"))
         return cell
     }
     
