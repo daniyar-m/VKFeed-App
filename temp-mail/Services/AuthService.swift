@@ -29,7 +29,7 @@ final class AuthService: NSObject, VKSdkDelegate, VKSdkUIDelegate {
     }
     
     func wakeUpSession() {
-        let scope = ["wall,friends"]
+        let scope = ["wall", "friends"]
         VKSdk.wakeUpSession(scope) { [delegate] state, error in
             switch state {
             case .initialized:

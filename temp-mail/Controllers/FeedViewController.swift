@@ -9,7 +9,7 @@ import UIKit
 
 class FeedViewController: UIViewController {
     
-    private let defaultNetworkingService: NetworkingService = DefaultNetworkingService()
+    private let networkingDataFetcher: DataFetcher = NetworkingDataFetcher(defaultNetworkingService: DefaultNetworkingService())
     
     private let messagesTableView: UITableView = {
         let view = UITableView()
@@ -21,16 +21,6 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let params = ["filters": "post,photo"]
-        defaultNetworkingService.request(path: API.newsFeed, params: params) { data, error in
-            if let error {
-                print("Received error while requesting data: \(error.localizedDescription)")
-            }
-            guard let data else { return }
-            let json = try? JSONSerialization.jsonObject(with: data)
-            print("JSON: \(json)")
-        }
-        
         view.backgroundColor = .red
         view.addSubview(messagesTableView)
         NSLayoutConstraint.activate([
@@ -40,6 +30,11 @@ class FeedViewController: UIViewController {
             messagesTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
         configureMessagesTableView()
+        
+        networkingDataFetcher.getFeed { feedResponse in
+            guard let feedResponse else { return }
+            feedResponse.items.map { print($0.date) }
+        }
     }
 
     private func configureMessagesTableView() {

@@ -2,6 +2,10 @@
 
 import Foundation
 
+protocol NetworkingService {
+    func request(path: String, params: Dictionary<String, String>, completion: @escaping (Data?, Error?) -> Void)
+}
+
 final class DefaultNetworkingService: NetworkingService {
     
     private let authService: AuthService
