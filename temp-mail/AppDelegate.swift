@@ -1,9 +1,4 @@
-//
-//  AppDelegate.swift
-//  temp-mail
-//
 //  Created by Daniyar Mamadov on 09.02.2023.
-//
 
 import UIKit
 import VK_ios_sdk

@@ -8,6 +8,8 @@ struct FeedResponseWrapped: Decodable {
 
 struct FeedResponse: Decodable {
     let items: [FeedItem]
+    let profiles: [Profile]
+    let groups: [Group]
 }
 
 struct FeedItem: Decodable {
@@ -23,4 +25,14 @@ struct FeedItem: Decodable {
 
 struct CountableItem: Decodable {
     let count: Int
+}
+
+struct Profile: Decodable {
+    let id: Int
+    let firstName: String
+    let lastName: String
+}
+
+struct Group: Decodable {
+    
 }

@@ -1,9 +1,4 @@
-//
-//  SceneDelegate.swift
-//  temp-mail
-//
 //  Created by Daniyar Mamadov on 09.02.2023.
-//
 
 import UIKit
 import VK_ios_sdk
@@ -72,7 +67,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, AuthServiceDelegate {
     
     func authServiceSignIn() { 
         print(#function)
-        window?.rootViewController = UINavigationController(rootViewController: FeedViewController())
+        window?.rootViewController = NewsfeedViewController()
     }
     
     func authServiceSignInFailed() {

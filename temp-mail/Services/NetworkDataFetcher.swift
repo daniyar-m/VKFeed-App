@@ -6,12 +6,12 @@ protocol DataFetcher {
     func getFeed(response: @escaping (FeedResponse?) -> Void)
 }
 
-struct NetworkingDataFetcher: DataFetcher {
+struct NetworkDataFetcher: DataFetcher {
     
     let defaultNetworkingService: NetworkingService
     
-    init(defaultNetworkingService: NetworkingService) {
-        self.defaultNetworkingService = defaultNetworkingService
+    init(_ networkingService: NetworkingService) {
+        self.defaultNetworkingService = networkingService
     }
     
     func getFeed(response: @escaping (FeedResponse?) -> Void) {
