@@ -13,13 +13,15 @@ class NewsfeedPresenter: NewsfeedPresentationLogic {
         switch response {
         case .presentNewsfeed(let feedResponse):
             print(".presentNewsfeed Presenter")
-            let cells = feedResponse.items.map { cellViewModel(from: $0) }
+            let cells = feedResponse.items.map { cellViewModel(from: $0,
+                                                               profiles: feedResponse.profiles,
+                                                               groups: feedResponse.groups) }
             let feedViewModel = NewsfeedViewModel(newsfeedCells: cells)
             viewController?.displaySomething(viewModel: .displayNewsfeed(feedViewModel))
         }
     }
     
-    private func cellViewModel(from feedItem: FeedItem) -> NewsfeedViewModel.NewsfeedCell {
+    private func cellViewModel(from feedItem: FeedItem, profiles: [Profile], groups: [Group]) -> NewsfeedViewModel.NewsfeedCell {
         return NewsfeedViewModel.NewsfeedCell(avatarUrlString: "",
                                               name: "feedItem.sourceId",
                                               date: "feedItem.date",
@@ -29,4 +31,8 @@ class NewsfeedPresenter: NewsfeedPresentationLogic {
                                               reposts: String(feedItem.reposts?.count ?? 0),
                                               views: String(feedItem.views?.count ?? 0))
     }
+    
+//    private func profile(for sourceId: Int, profiles: [Profile], groups: [Group]) -> ProfileRepresentable {
+//        
+//    }
 }
