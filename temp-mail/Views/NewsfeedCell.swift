@@ -38,8 +38,8 @@ final class NewsfeedCell: UITableViewCell {
         return view
     }()
     
-    private let avatarImageView: UIImageView = {
-        let view = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+    private let avatarImageView: WebImageView = {
+        let view = WebImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         view.image = .checkmark
         view.backgroundColor = .red
         view.sizeToFit()
