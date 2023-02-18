@@ -220,6 +220,7 @@ final class NewsfeedCell: UITableViewCell {
     }
     
     func configure(with viewModel: NewsfeedCellViewModel) {
+        avatarImageView.set(imageUrl: viewModel.avatarUrlString)
         nameLabel.text = viewModel.name
         dateLabel.text = viewModel.date
         textBodyLabel.text = viewModel.text
