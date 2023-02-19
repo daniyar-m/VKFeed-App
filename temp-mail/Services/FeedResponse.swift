@@ -21,6 +21,7 @@ struct FeedItem: Decodable {
     let likes: CountableItem?
     let reposts: CountableItem?
     let views: CountableItem?
+    let attachments: [Attachment]?
 }
 
 struct CountableItem: Decodable {
@@ -47,4 +48,28 @@ struct Group: Decodable, ProfileRepresentable {
     let name: String
     let photo100: String
     var photo: String { return photo100 }
+}
+
+struct Attachment: Decodable {
+//    let type: String
+    let photo: Photo?
+}
+
+struct Photo: Decodable {
+//    let id: Int
+    let sizes: [PhotoSize]
+//    let albumId: Int
+//    let ownerId: Int
+//    let userId: Int
+//    let text: String
+//    let date: Int
+//    let width: Int
+//    let height: Int
+}
+
+struct PhotoSize: Decodable {
+    let type: String
+    let url: String
+    let width: Int
+    let height: Int
 }

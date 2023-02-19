@@ -20,6 +20,7 @@ class NewsfeedInteractor: NewsfeedBusinessLogic, NewsfeedDataStore {
         case .getNewsfeed:
             print(".getNewsfeed Interactor")
             fetcher.getFeed { [weak self] feedResponse in
+//                feedResponse?.items.forEach { print($0.attachments) }
                 guard let feedResponse else { return }
                 self?.presenter?.presentSomething(response: .presentNewsfeed(feedResponse))
             }
