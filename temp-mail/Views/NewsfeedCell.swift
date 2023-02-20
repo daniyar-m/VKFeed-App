@@ -24,81 +24,65 @@ final class NewsfeedCell: UITableViewCell {
     
     static let identifier = "NewsfeedTableViewCellID"
     
-    private let mainStackView: UIStackView = {
-        let view = UIStackView()
-        view.axis = .vertical
-        view.distribution = .equalSpacing
-        view.alignment = .fill
-        view.spacing = 4
-        view.sizeToFit()
+    private let cardView: UIView = {
+        let view = UIView()
         view.layer.cornerRadius = 8
         view.clipsToBounds = true
         view.backgroundColor = .white
-        view.isLayoutMarginsRelativeArrangement = true
-        view.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 4, leading: 4, bottom: 4, trailing: 4)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private let topStackView: UIStackView = {
-        let view = UIStackView()
-        view.axis = .horizontal
-        view.distribution = .fill
-        view.alignment = .center
-        view.spacing = 4
+    private let topView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
         view.sizeToFit()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private let bottomView: UIStackView = {
+        let view = UIStackView()
+        view.backgroundColor = .clear
+        view.axis = .horizontal
+        view.distribution = .equalCentering
+        view.alignment = .center
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private let avatarImageView: WebImageView = {
-        let view = WebImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        view.sizeToFit()
-        view.layer.cornerRadius = view.frame.width / 2
+        let view = WebImageView()
+        view.layer.cornerRadius = 20
         view.clipsToBounds = true
-//        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-    private let titleStackView: UIStackView = {
-        let view = UIStackView()
-        view.axis = .vertical
-        view.distribution = .fillEqually
-        view.alignment = .leading
-        view.spacing = 2
-        view.sizeToFit()
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private let nameLabel: UILabel = {
         let view = UILabel()
         view.sizeToFit()
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private let dateLabel: UILabel = {
         let view = UILabel()
         view.sizeToFit()
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private let textBodyLabel: UILabel = {
         let view = UILabel()
         view.sizeToFit()
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private let photoImageView: WebImageView = {
         let view = WebImageView()
-        view.sizeToFit()
-        return view
-    }()
-    
-    private let bottomStackView: UIStackView = {
-        let view = UIStackView()
-        view.axis = .horizontal
-        view.distribution = .equalCentering
-        view.alignment = .center
-        view.sizeToFit()
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -197,33 +181,72 @@ final class NewsfeedCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.backgroundColor = .clear
-        self.addSubview(mainStackView)
-        mainStackView.addArrangedSubview(topStackView)
-        mainStackView.addArrangedSubview(textBodyLabel)
-        mainStackView.addArrangedSubview(photoImageView)
-        mainStackView.addArrangedSubview(bottomStackView)
-        topStackView.addArrangedSubview(avatarImageView)
-        topStackView.addArrangedSubview(titleStackView)
-        titleStackView.addArrangedSubview(nameLabel)
-        titleStackView.addArrangedSubview(dateLabel)
-        bottomStackView.addArrangedSubview(likesStackView)
+        
+        self.addSubview(cardView)
+        
+        cardView.addSubview(topView)
+        cardView.addSubview(textBodyLabel)
+        cardView.addSubview(photoImageView)
+        cardView.addSubview(bottomView)
+        
+        topView.addSubview(avatarImageView)
+        topView.addSubview(nameLabel)
+        topView.addSubview(dateLabel)
+        
+        bottomView.addArrangedSubview(likesStackView)
+        bottomView.addArrangedSubview(commentsStackView)
+        bottomView.addArrangedSubview(repostsStackView)
+        bottomView.addArrangedSubview(viewsStackView)
+
         likesStackView.addArrangedSubview(likesImageView)
         likesStackView.addArrangedSubview(likesCountLabel)
-        bottomStackView.addArrangedSubview(commentsStackView)
+
         commentsStackView.addArrangedSubview(commentsImageView)
         commentsStackView.addArrangedSubview(commentsCountLabel)
-        bottomStackView.addArrangedSubview(repostsStackView)
+
         repostsStackView.addArrangedSubview(repostsImageView)
         repostsStackView.addArrangedSubview(repostsCountLabel)
-        bottomStackView.addArrangedSubview(viewsStackView)
+
         viewsStackView.addArrangedSubview(viewsImageView)
         viewsStackView.addArrangedSubview(viewsCountLabel)
         
         NSLayoutConstraint.activate([
-            mainStackView.topAnchor.constraint(equalTo: self.topAnchor),
-            mainStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 4),
-            mainStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -4),
-            mainStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -4)
+            cardView.topAnchor.constraint(equalTo: self.topAnchor),
+            cardView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
+            cardView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8),
+            cardView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
+            
+            topView.topAnchor.constraint(equalTo: cardView.topAnchor),
+            topView.leadingAnchor.constraint(equalTo: cardView.leadingAnchor),
+            topView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor),
+            topView.heightAnchor.constraint(equalToConstant: 44),
+            
+            avatarImageView.topAnchor.constraint(equalTo: topView.topAnchor, constant: 4),
+            avatarImageView.leadingAnchor.constraint(equalTo: topView.leadingAnchor, constant: 4),
+            avatarImageView.widthAnchor.constraint(equalToConstant: 40),
+            avatarImageView.heightAnchor.constraint(equalToConstant: 40),
+            
+            nameLabel.topAnchor.constraint(equalTo: topView.topAnchor, constant: 4),
+            nameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 4),
+            nameLabel.trailingAnchor.constraint(equalTo: topView.trailingAnchor, constant: -4),
+            
+            dateLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 2),
+            dateLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 4),
+            dateLabel.trailingAnchor.constraint(equalTo: topView.trailingAnchor, constant: -4),
+            
+            textBodyLabel.topAnchor.constraint(equalTo: topView.bottomAnchor, constant: 4),
+            textBodyLabel.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 4),
+            textBodyLabel.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -4),
+            
+            photoImageView.topAnchor.constraint(equalTo: textBodyLabel.bottomAnchor, constant: 4),
+            photoImageView.leadingAnchor.constraint(equalTo: cardView.leadingAnchor),
+            photoImageView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor),
+            photoImageView.heightAnchor.constraint(equalToConstant: 40),
+            
+            bottomView.topAnchor.constraint(equalTo: photoImageView.bottomAnchor, constant: 8),
+            bottomView.bottomAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -8),
+            bottomView.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 8),
+            bottomView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -8)
         ])
     }
     
