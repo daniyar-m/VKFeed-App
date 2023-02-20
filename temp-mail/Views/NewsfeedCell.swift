@@ -11,6 +11,13 @@ protocol NewsfeedCellViewModel {
     var comments: String? { get }
     var reposts: String? { get }
     var views: String? { get }
+    var photoAttachment: FeedCellPhotoAttachmentViewModel? { get }
+}
+
+protocol FeedCellPhotoAttachmentViewModel {
+    var photoUrlString: String? { get }
+    var width: Int { get }
+    var height: Int { get }
 }
 
 final class NewsfeedCell: UITableViewCell {
@@ -24,6 +31,11 @@ final class NewsfeedCell: UITableViewCell {
         view.alignment = .fill
         view.spacing = 4
         view.sizeToFit()
+        view.layer.cornerRadius = 8
+        view.clipsToBounds = true
+        view.backgroundColor = .white
+        view.isLayoutMarginsRelativeArrangement = true
+        view.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 4, leading: 4, bottom: 4, trailing: 4)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -40,9 +52,9 @@ final class NewsfeedCell: UITableViewCell {
     
     private let avatarImageView: WebImageView = {
         let view = WebImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        view.image = .checkmark
-        view.backgroundColor = .red
         view.sizeToFit()
+        view.layer.cornerRadius = view.frame.width / 2
+        view.clipsToBounds = true
 //        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -59,21 +71,24 @@ final class NewsfeedCell: UITableViewCell {
     
     private let nameLabel: UILabel = {
         let view = UILabel()
-        view.text = "Name"
         view.sizeToFit()
         return view
     }()
     
     private let dateLabel: UILabel = {
         let view = UILabel()
-        view.text = "Date"
         view.sizeToFit()
         return view
     }()
     
     private let textBodyLabel: UILabel = {
         let view = UILabel()
-        view.text = "Text"
+        view.sizeToFit()
+        return view
+    }()
+    
+    private let photoImageView: WebImageView = {
+        let view = WebImageView()
         view.sizeToFit()
         return view
     }()
@@ -106,7 +121,6 @@ final class NewsfeedCell: UITableViewCell {
     
     private let likesCountLabel: UILabel = {
         let view = UILabel()
-        view.text = "100500"
         view.sizeToFit()
         return view
     }()
@@ -130,7 +144,6 @@ final class NewsfeedCell: UITableViewCell {
     
     private let commentsCountLabel: UILabel = {
         let view = UILabel()
-        view.text = "100"
         view.sizeToFit()
         return view
     }()
@@ -154,7 +167,6 @@ final class NewsfeedCell: UITableViewCell {
     
     private let repostsCountLabel: UILabel = {
         let view = UILabel()
-        view.text = "500"
         view.sizeToFit()
         return view
     }()
@@ -178,17 +190,17 @@ final class NewsfeedCell: UITableViewCell {
     
     private let viewsCountLabel: UILabel = {
         let view = UILabel()
-        view.text = "100500"
         view.sizeToFit()
         return view
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.backgroundColor = .yellow
+        self.backgroundColor = .clear
         self.addSubview(mainStackView)
         mainStackView.addArrangedSubview(topStackView)
         mainStackView.addArrangedSubview(textBodyLabel)
+        mainStackView.addArrangedSubview(photoImageView)
         mainStackView.addArrangedSubview(bottomStackView)
         topStackView.addArrangedSubview(avatarImageView)
         topStackView.addArrangedSubview(titleStackView)
@@ -209,9 +221,9 @@ final class NewsfeedCell: UITableViewCell {
         
         NSLayoutConstraint.activate([
             mainStackView.topAnchor.constraint(equalTo: self.topAnchor),
-            mainStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            mainStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            mainStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            mainStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 4),
+            mainStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -4),
+            mainStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -4)
         ])
     }
     
@@ -228,5 +240,11 @@ final class NewsfeedCell: UITableViewCell {
         commentsCountLabel.text = viewModel.comments
         repostsCountLabel.text = viewModel.reposts
         viewsCountLabel.text = viewModel.views
+        if let photoAttachment = viewModel.photoAttachment {
+            photoImageView.set(imageUrl: photoAttachment.photoUrlString)
+            photoImageView.isHidden = false
+        } else {
+            photoImageView.isHidden = true
+        }
     }
 }

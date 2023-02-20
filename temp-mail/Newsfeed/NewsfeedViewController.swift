@@ -32,13 +32,13 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
     private let newsfeedTableView: UITableView = {
         let view = UITableView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .orange
+        view.backgroundColor = UIColor(red: 0.93, green: 0.93, blue: 0.95, alpha: 1.00)
         return view
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .orange
+        view.backgroundColor = .white
         setup()
         view.addSubview(newsfeedTableView)
         NSLayoutConstraint.activate([
@@ -55,9 +55,9 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
         newsfeedTableView.delegate = self
         newsfeedTableView.dataSource = self
         newsfeedTableView.register(NewsfeedCell.self, forCellReuseIdentifier: NewsfeedCell.identifier)
-        newsfeedTableView.estimatedRowHeight = 60
+        newsfeedTableView.estimatedRowHeight = 120
         newsfeedTableView.rowHeight = UITableView.automaticDimension
-        newsfeedTableView.separatorStyle = .singleLine
+        newsfeedTableView.separatorStyle = .none
     }
         
     func displaySomething(viewModel: Newsfeed.Model.ViewModel.ViewModelData) {

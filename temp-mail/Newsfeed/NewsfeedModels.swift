@@ -37,6 +37,12 @@ struct NewsfeedViewModel {
         var comments: String?
         var reposts: String?
         var views: String?
+        var photoAttachment: FeedCellPhotoAttachmentViewModel?
+    }
+    struct FeelCellPhotoAttachment: FeedCellPhotoAttachmentViewModel {
+        var photoUrlString: String?
+        var width: Int
+        var height: Int
     }
     let newsfeedCells: [NewsfeedCell]
 }

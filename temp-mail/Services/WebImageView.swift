@@ -4,9 +4,9 @@ import UIKit
 
 class WebImageView: UIImageView {
     
-    func set(imageUrl: String) {
+    func set(imageUrl: String?) {
         
-        guard let url = URL(string: imageUrl) else { return }
+        guard let imageUrl, let url = URL(string: imageUrl) else { return }
         
         if let cachedResponse = URLCache.shared.cachedResponse(for: URLRequest(url: url)) {
             self.image = UIImage(data: cachedResponse.data)
