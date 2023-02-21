@@ -12,12 +12,18 @@ protocol NewsfeedCellViewModel {
     var reposts: String? { get }
     var views: String? { get }
     var photoAttachment: FeedCellPhotoAttachmentViewModel? { get }
+    var sizes: FeedCellSizes { get }
 }
 
 protocol FeedCellPhotoAttachmentViewModel {
     var photoUrlString: String? { get }
     var width: Int { get }
     var height: Int { get }
+}
+
+protocol FeedCellSizes {
+    var postLabelFrame: CGRect { get }
+    var attachmentFrame: CGRect { get }
 }
 
 final class NewsfeedCell: UITableViewCell {
@@ -75,6 +81,8 @@ final class NewsfeedCell: UITableViewCell {
     
     private let textBodyLabel: UILabel = {
         let view = UILabel()
+        view.numberOfLines = 0
+        view.lineBreakMode = .byWordWrapping
         view.sizeToFit()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -211,10 +219,10 @@ final class NewsfeedCell: UITableViewCell {
         viewsStackView.addArrangedSubview(viewsCountLabel)
         
         NSLayoutConstraint.activate([
-            cardView.topAnchor.constraint(equalTo: self.topAnchor),
+            cardView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
             cardView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
             cardView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8),
-            cardView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
+            cardView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             
             topView.topAnchor.constraint(equalTo: cardView.topAnchor),
             topView.leadingAnchor.constraint(equalTo: cardView.leadingAnchor),
@@ -241,7 +249,6 @@ final class NewsfeedCell: UITableViewCell {
             photoImageView.topAnchor.constraint(equalTo: textBodyLabel.bottomAnchor, constant: 4),
             photoImageView.leadingAnchor.constraint(equalTo: cardView.leadingAnchor),
             photoImageView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor),
-            photoImageView.heightAnchor.constraint(equalToConstant: 40),
             
             bottomView.topAnchor.constraint(equalTo: photoImageView.bottomAnchor, constant: 8),
             bottomView.bottomAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -8),
@@ -263,11 +270,30 @@ final class NewsfeedCell: UITableViewCell {
         commentsCountLabel.text = viewModel.comments
         repostsCountLabel.text = viewModel.reposts
         viewsCountLabel.text = viewModel.views
+        
+        textBodyLabel.frame = viewModel.sizes.postLabelFrame
+        photoImageView.frame = viewModel.sizes.attachmentFrame
+        
         if let photoAttachment = viewModel.photoAttachment {
             photoImageView.set(imageUrl: photoAttachment.photoUrlString)
+//            let aspectRatio = photoImageView.getRatio()
+//            photoImageView.frame = CGRectMake(photoImageView.frame.origin.x,
+//                                              photoImageView.frame.origin.y,
+//                                              photoImageView.frame.size.width,
+//                                              photoImageView.frame.size.width / aspectRatio)
             photoImageView.isHidden = false
         } else {
             photoImageView.isHidden = true
         }
     }
 }
+
+//extension WebImageView {
+//    func getRatio() -> CGFloat {
+//        if let image = self.image {
+//            return CGFloat(image.size.width / image.size.height)
+//        } else {
+//            return 1
+//        }
+//    }
+//}

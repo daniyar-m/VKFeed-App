@@ -20,11 +20,11 @@
 		5C572A06299E735600F4E61F /* NewsfeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C572A00299E735600F4E61F /* NewsfeedViewController.swift */; };
 		5C572A07299E735600F4E61F /* NewsfeedInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C572A01299E735600F4E61F /* NewsfeedInteractor.swift */; };
 		5C572A0929A127B500F4E61F /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C572A0829A127B500F4E61F /* WebImageView.swift */; };
+		5CA11F2B29A5378F00A082D9 /* NewsfeedCellLayoutCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA11F2A29A5378F00A082D9 /* NewsfeedCellLayoutCalculator.swift */; };
 		5CA91A962995108E0047F36D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA91A952995108E0047F36D /* AppDelegate.swift */; };
 		5CA91A982995108E0047F36D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA91A972995108E0047F36D /* SceneDelegate.swift */; };
 		5CA91A9F2995108F0047F36D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CA91A9E2995108F0047F36D /* Assets.xcassets */; };
 		5CA91AA22995108F0047F36D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CA91AA02995108F0047F36D /* LaunchScreen.storyboard */; };
-		5CA91AAA299513B90047F36D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA91AA9299513B90047F36D /* Message.swift */; };
 		5CA91AAC299517390047F36D /* NewsfeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA91AAB299517390047F36D /* NewsfeedCell.swift */; };
 		B8F2944560C8D7DBD9054355 /* Pods_temp_mail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5CEF72C7325661C64127699 /* Pods_temp_mail.framework */; };
 /* End PBXBuildFile section */
@@ -44,13 +44,13 @@
 		5C572A00299E735600F4E61F /* NewsfeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedViewController.swift; sourceTree = "<group>"; };
 		5C572A01299E735600F4E61F /* NewsfeedInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedInteractor.swift; sourceTree = "<group>"; };
 		5C572A0829A127B500F4E61F /* WebImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebImageView.swift; sourceTree = "<group>"; };
+		5CA11F2A29A5378F00A082D9 /* NewsfeedCellLayoutCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedCellLayoutCalculator.swift; sourceTree = "<group>"; };
 		5CA91A922995108E0047F36D /* temp-mail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "temp-mail.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CA91A952995108E0047F36D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5CA91A972995108E0047F36D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		5CA91A9E2995108F0047F36D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5CA91AA12995108F0047F36D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5CA91AA32995108F0047F36D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5CA91AA9299513B90047F36D /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		5CA91AAB299517390047F36D /* NewsfeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedCell.swift; sourceTree = "<group>"; };
 		A5CEF72C7325661C64127699 /* Pods_temp_mail.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_temp_mail.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAB909E913C5B6B4C1D13381 /* Pods-temp-mail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-temp-mail.debug.xcconfig"; path = "Target Support Files/Pods-temp-mail/Pods-temp-mail.debug.xcconfig"; sourceTree = "<group>"; };
@@ -89,6 +89,7 @@
 			children = (
 				5CA91AAB299517390047F36D /* NewsfeedCell.swift */,
 				5CA91AA02995108F0047F36D /* LaunchScreen.storyboard */,
+				5CA11F2A29A5378F00A082D9 /* NewsfeedCellLayoutCalculator.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -146,7 +147,6 @@
 				5C3DA2F22996982600449A18 /* Services */,
 				5C24AA9B299A550000CA4646 /* Controllers */,
 				5C24AA9C299A551B00CA4646 /* Views */,
-				5CA91AA9299513B90047F36D /* Message.swift */,
 				5CA91A9E2995108F0047F36D /* Assets.xcassets */,
 				5CA91AA32995108F0047F36D /* Info.plist */,
 			);
@@ -278,7 +278,6 @@
 			files = (
 				5CA91AAC299517390047F36D /* NewsfeedCell.swift in Sources */,
 				5C572A0929A127B500F4E61F /* WebImageView.swift in Sources */,
-				5CA91AAA299513B90047F36D /* Message.swift in Sources */,
 				5C572A02299E735600F4E61F /* NewsfeedPresenter.swift in Sources */,
 				5C24AAA1299A571900CA4646 /* API.swift in Sources */,
 				5C24AAA5299E504200CA4646 /* NetworkDataFetcher.swift in Sources */,
@@ -290,6 +289,7 @@
 				5C24AAA3299E499E00CA4646 /* FeedResponse.swift in Sources */,
 				5C572A07299E735600F4E61F /* NewsfeedInteractor.swift in Sources */,
 				5CA91A962995108E0047F36D /* AppDelegate.swift in Sources */,
+				5CA11F2B29A5378F00A082D9 /* NewsfeedCellLayoutCalculator.swift in Sources */,
 				5C572A05299E735600F4E61F /* NewsfeedModels.swift in Sources */,
 				5CA91A982995108E0047F36D /* SceneDelegate.swift in Sources */,
 				5C3DA2F12996981100449A18 /* AuthService.swift in Sources */,
