@@ -55,8 +55,6 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
         newsfeedTableView.delegate = self
         newsfeedTableView.dataSource = self
         newsfeedTableView.register(NewsfeedCell.self, forCellReuseIdentifier: NewsfeedCell.identifier)
-        newsfeedTableView.estimatedRowHeight = 1
-        newsfeedTableView.rowHeight = UITableView.automaticDimension
         newsfeedTableView.separatorStyle = .none
     }
         
@@ -80,5 +78,9 @@ extension NewsfeedViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = newsfeedTableView.dequeueReusableCell(withIdentifier: NewsfeedCell.identifier, for: indexPath) as? NewsfeedCell else { return UITableViewCell() }
         cell.configure(with: newsfeedViewModel.newsfeedCells[indexPath.row])
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return newsfeedViewModel.newsfeedCells[indexPath.row].sizes.totalHeight
     }
 }

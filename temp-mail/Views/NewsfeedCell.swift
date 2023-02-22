@@ -24,6 +24,8 @@ protocol FeedCellPhotoAttachmentViewModel {
 protocol FeedCellSizes {
     var postLabelFrame: CGRect { get }
     var attachmentFrame: CGRect { get }
+    var bottomViewFrame: CGRect { get }
+    var totalHeight: CGFloat { get }
 }
 
 final class NewsfeedCell: UITableViewCell {
@@ -205,16 +207,16 @@ final class NewsfeedCell: UITableViewCell {
         bottomView.addArrangedSubview(commentsStackView)
         bottomView.addArrangedSubview(repostsStackView)
         bottomView.addArrangedSubview(viewsStackView)
-
+        
         likesStackView.addArrangedSubview(likesImageView)
         likesStackView.addArrangedSubview(likesCountLabel)
-
+        
         commentsStackView.addArrangedSubview(commentsImageView)
         commentsStackView.addArrangedSubview(commentsCountLabel)
-
+        
         repostsStackView.addArrangedSubview(repostsImageView)
         repostsStackView.addArrangedSubview(repostsCountLabel)
-
+        
         viewsStackView.addArrangedSubview(viewsImageView)
         viewsStackView.addArrangedSubview(viewsCountLabel)
         
@@ -273,27 +275,13 @@ final class NewsfeedCell: UITableViewCell {
         
         textBodyLabel.frame = viewModel.sizes.postLabelFrame
         photoImageView.frame = viewModel.sizes.attachmentFrame
+        bottomView.frame = viewModel.sizes.bottomViewFrame
         
         if let photoAttachment = viewModel.photoAttachment {
             photoImageView.set(imageUrl: photoAttachment.photoUrlString)
-//            let aspectRatio = photoImageView.getRatio()
-//            photoImageView.frame = CGRectMake(photoImageView.frame.origin.x,
-//                                              photoImageView.frame.origin.y,
-//                                              photoImageView.frame.size.width,
-//                                              photoImageView.frame.size.width / aspectRatio)
             photoImageView.isHidden = false
         } else {
             photoImageView.isHidden = true
         }
     }
 }
-
-//extension WebImageView {
-//    func getRatio() -> CGFloat {
-//        if let image = self.image {
-//            return CGFloat(image.size.width / image.size.height)
-//        } else {
-//            return 1
-//        }
-//    }
-//}

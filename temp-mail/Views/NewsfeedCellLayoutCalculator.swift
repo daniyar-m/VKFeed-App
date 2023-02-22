@@ -5,6 +5,8 @@ import UIKit
 struct Sizes: FeedCellSizes {
     var postLabelFrame: CGRect
     var attachmentFrame: CGRect
+    var bottomViewFrame: CGRect
+    var totalHeight: CGFloat
 }
 
 protocol FeedCellLayoutCalculator {
@@ -20,6 +22,9 @@ final class NewsfeedCellLayoutCalculator: FeedCellLayoutCalculator {
     }
     
     func sizes(postText: String?, photoAttachment: FeedCellPhotoAttachmentViewModel?) -> FeedCellSizes {
-        return Sizes(postLabelFrame: CGRect.zero, attachmentFrame: CGRect.zero)
+        return Sizes(postLabelFrame: .zero,
+                     attachmentFrame: .zero,
+                     bottomViewFrame: .zero,
+                     totalHeight: 300)
     }
 }
