@@ -220,6 +220,36 @@ final class NewsfeedCell: UITableViewCell {
         viewsStackView.addArrangedSubview(viewsImageView)
         viewsStackView.addArrangedSubview(viewsCountLabel)
         
+        setupConstraints()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configure(with viewModel: NewsfeedCellViewModel) {
+        avatarImageView.set(imageUrl: viewModel.avatarUrlString)
+        nameLabel.text = viewModel.name
+        dateLabel.text = viewModel.date
+        textBodyLabel.text = viewModel.text
+        likesCountLabel.text = viewModel.likes
+        commentsCountLabel.text = viewModel.comments
+        repostsCountLabel.text = viewModel.reposts
+        viewsCountLabel.text = viewModel.views
+        
+        textBodyLabel.frame = viewModel.sizes.postLabelFrame
+        photoImageView.frame = viewModel.sizes.attachmentFrame
+        bottomView.frame = viewModel.sizes.bottomViewFrame
+        
+        if let photoAttachment = viewModel.photoAttachment {
+            photoImageView.set(imageUrl: photoAttachment.photoUrlString)
+            photoImageView.isHidden = false
+        } else {
+            photoImageView.isHidden = true
+        }
+    }
+    
+    private func setupConstraints() {
         NSLayoutConstraint.activate([
             cardView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
             cardView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
@@ -257,31 +287,5 @@ final class NewsfeedCell: UITableViewCell {
             bottomView.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 8),
             bottomView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -8)
         ])
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func configure(with viewModel: NewsfeedCellViewModel) {
-        avatarImageView.set(imageUrl: viewModel.avatarUrlString)
-        nameLabel.text = viewModel.name
-        dateLabel.text = viewModel.date
-        textBodyLabel.text = viewModel.text
-        likesCountLabel.text = viewModel.likes
-        commentsCountLabel.text = viewModel.comments
-        repostsCountLabel.text = viewModel.reposts
-        viewsCountLabel.text = viewModel.views
-        
-        textBodyLabel.frame = viewModel.sizes.postLabelFrame
-        photoImageView.frame = viewModel.sizes.attachmentFrame
-        bottomView.frame = viewModel.sizes.bottomViewFrame
-        
-        if let photoAttachment = viewModel.photoAttachment {
-            photoImageView.set(imageUrl: photoAttachment.photoUrlString)
-            photoImageView.isHidden = false
-        } else {
-            photoImageView.isHidden = true
-        }
     }
 }
