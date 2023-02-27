@@ -221,6 +221,7 @@ final class NewsfeedCell: UITableViewCell {
         viewsStackView.addArrangedSubview(viewsCountLabel)
         
 //        setupConstraints()
+//        setupConstraints()
         setupConstraints()
     }
     
