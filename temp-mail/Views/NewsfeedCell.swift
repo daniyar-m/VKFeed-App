@@ -69,6 +69,7 @@ final class NewsfeedCell: UITableViewCell {
     
     private let nameLabel: UILabel = {
         let view = UILabel()
+        view.numberOfLines = 1
         view.sizeToFit()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -76,6 +77,7 @@ final class NewsfeedCell: UITableViewCell {
     
     private let dateLabel: UILabel = {
         let view = UILabel()
+        view.numberOfLines = 1
         view.sizeToFit()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -92,6 +94,8 @@ final class NewsfeedCell: UITableViewCell {
     
     private let photoImageView: WebImageView = {
         let view = WebImageView()
+        view.contentMode = .scaleAspectFit
+        view.sizeToFit()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -220,8 +224,6 @@ final class NewsfeedCell: UITableViewCell {
         viewsStackView.addArrangedSubview(viewsImageView)
         viewsStackView.addArrangedSubview(viewsCountLabel)
         
-//        setupConstraints()
-//        setupConstraints()
         setupConstraints()
     }
     
@@ -239,9 +241,9 @@ final class NewsfeedCell: UITableViewCell {
         repostsCountLabel.text = viewModel.reposts
         viewsCountLabel.text = viewModel.views
         
-        textBodyLabel.frame = viewModel.sizes.postLabelFrame
-        photoImageView.frame = viewModel.sizes.attachmentFrame
-        bottomView.frame = viewModel.sizes.bottomViewFrame
+//        textBodyLabel.frame = viewModel.sizes.postLabelFrame
+//        photoImageView.frame = viewModel.sizes.attachmentFrame
+//        bottomView.frame = viewModel.sizes.bottomViewFrame
         
         if let photoAttachment = viewModel.photoAttachment {
             photoImageView.set(imageUrl: photoAttachment.photoUrlString)
@@ -249,6 +251,8 @@ final class NewsfeedCell: UITableViewCell {
         } else {
             photoImageView.isHidden = true
         }
+        setNeedsDisplay()
+        setNeedsLayout()
     }
     
     private func setupConstraints() {

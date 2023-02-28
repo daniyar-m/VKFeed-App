@@ -56,6 +56,8 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
         newsfeedTableView.dataSource = self
         newsfeedTableView.register(NewsfeedCell.self, forCellReuseIdentifier: NewsfeedCell.identifier)
         newsfeedTableView.separatorStyle = .none
+        newsfeedTableView.estimatedRowHeight = 1
+        newsfeedTableView.rowHeight = UITableView.automaticDimension
     }
         
     func displaySomething(viewModel: Newsfeed.Model.ViewModel.ViewModelData) {
@@ -81,6 +83,6 @@ extension NewsfeedViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return newsfeedViewModel.newsfeedCells[indexPath.row].sizes.totalHeight
+        return UITableView.automaticDimension
     }
 }

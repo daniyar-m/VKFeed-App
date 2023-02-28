@@ -58,10 +58,10 @@ class NewsfeedPresenter: NewsfeedPresentationLogic {
         return profileRepresentable
     }
     
-    private func photoAttachment(feedItem: FeedItem) -> NewsfeedViewModel.FeelCellPhotoAttachment? {
+    private func photoAttachment(feedItem: FeedItem) -> NewsfeedViewModel.FeedCellPhotoAttachment? {
         guard let photos = feedItem.attachments?.compactMap({ attachment in attachment.photo}),
               let firstPhoto = photos.first else { return nil }
-        return NewsfeedViewModel.FeelCellPhotoAttachment(photoUrlString: firstPhoto.srcBIG,
+        return NewsfeedViewModel.FeedCellPhotoAttachment(photoUrlString: firstPhoto.srcBIG,
                                                          width: firstPhoto.width,
                                                          height: firstPhoto.height)
     }

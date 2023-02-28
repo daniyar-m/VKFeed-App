@@ -40,7 +40,7 @@ struct NewsfeedViewModel {
         var photoAttachment: FeedCellPhotoAttachmentViewModel?
         var sizes: FeedCellSizes
     }
-    struct FeelCellPhotoAttachment: FeedCellPhotoAttachmentViewModel {
+    struct FeedCellPhotoAttachment: FeedCellPhotoAttachmentViewModel {
         var photoUrlString: String?
         var width: Int
         var height: Int
