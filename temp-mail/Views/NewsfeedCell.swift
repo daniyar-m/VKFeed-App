@@ -87,16 +87,14 @@ final class NewsfeedCell: UITableViewCell {
         let view = UILabel()
         view.numberOfLines = 0
         view.lineBreakMode = .byWordWrapping
-        view.sizeToFit()
-        view.translatesAutoresizingMaskIntoConstraints = false
+//        view.sizeToFit()
+//        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private let photoImageView: WebImageView = {
         let view = WebImageView()
-        view.contentMode = .scaleAspectFit
-        view.sizeToFit()
-        view.translatesAutoresizingMaskIntoConstraints = false
+//        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -241,8 +239,8 @@ final class NewsfeedCell: UITableViewCell {
         repostsCountLabel.text = viewModel.reposts
         viewsCountLabel.text = viewModel.views
         
-//        textBodyLabel.frame = viewModel.sizes.postLabelFrame
-//        photoImageView.frame = viewModel.sizes.attachmentFrame
+        textBodyLabel.frame = viewModel.sizes.postLabelFrame
+        photoImageView.frame = viewModel.sizes.attachmentFrame
 //        bottomView.frame = viewModel.sizes.bottomViewFrame
         
         if let photoAttachment = viewModel.photoAttachment {
@@ -251,8 +249,6 @@ final class NewsfeedCell: UITableViewCell {
         } else {
             photoImageView.isHidden = true
         }
-        setNeedsDisplay()
-        setNeedsLayout()
     }
     
     private func setupConstraints() {
@@ -280,13 +276,13 @@ final class NewsfeedCell: UITableViewCell {
             dateLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 4),
             dateLabel.trailingAnchor.constraint(equalTo: topView.trailingAnchor, constant: -4),
             
-            textBodyLabel.topAnchor.constraint(equalTo: topView.bottomAnchor, constant: 4),
-            textBodyLabel.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 4),
-            textBodyLabel.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -4),
-            
-            photoImageView.topAnchor.constraint(equalTo: textBodyLabel.bottomAnchor, constant: 4),
-            photoImageView.leadingAnchor.constraint(equalTo: cardView.leadingAnchor),
-            photoImageView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor),
+//            textBodyLabel.topAnchor.constraint(equalTo: topView.bottomAnchor, constant: 4),
+//            textBodyLabel.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 4),
+//            textBodyLabel.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -4),
+//
+//            photoImageView.topAnchor.constraint(equalTo: textBodyLabel.bottomAnchor, constant: 4),
+//            photoImageView.leadingAnchor.constraint(equalTo: cardView.leadingAnchor),
+//            photoImageView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor),
             
             bottomView.topAnchor.constraint(equalTo: photoImageView.bottomAnchor, constant: 8),
             bottomView.bottomAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -8),
