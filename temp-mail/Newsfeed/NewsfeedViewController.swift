@@ -79,10 +79,17 @@ extension NewsfeedViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = newsfeedTableView.dequeueReusableCell(withIdentifier: NewsfeedCell.identifier, for: indexPath) as? NewsfeedCell else { return UITableViewCell() }
         cell.fill(with: newsfeedViewModel.newsfeedCells[indexPath.row])
+        cell.delegate = self
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return newsfeedViewModel.newsfeedCells[indexPath.row].sizes.totalHeight
+    }
+}
+
+extension NewsfeedViewController: NewsfeedCellDelegate {
+    func revealPost(for cell: NewsfeedCell) {
+        print("WAZAP")
     }
 }

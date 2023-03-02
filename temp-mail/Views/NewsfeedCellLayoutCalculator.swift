@@ -4,6 +4,7 @@ import UIKit
 
 struct Sizes: FeedCellSizes {
     var postLabelFrame: CGRect
+    var moreTextButtonFrame: CGRect
     var attachmentFrame: CGRect
     var bottomViewFrame: CGRect
     var totalHeight: CGFloat
@@ -23,6 +24,8 @@ final class NewsfeedCellLayoutCalculator: FeedCellLayoutCalculator {
     
     func sizes(postText: String?, photoAttachment: FeedCellPhotoAttachmentViewModel?) -> FeedCellSizes {
         
+        var isMoreTextButtonDisplayed = false
+        
         let cardViewWidth = screenWidth - Constants.cardViewInsets.left - Constants.cardViewInsets.right
         
         // MARK: - Работа с postLabelFrame
@@ -31,13 +34,26 @@ final class NewsfeedCellLayoutCalculator: FeedCellLayoutCalculator {
                                     size: .zero)
         if let postText, !postText.isEmpty {
             let width = cardViewWidth - Constants.postLabelInsets.left - Constants.postLabelInsets.right
-            let height = postText.height(width: width, font: Constants.postLabelFont)
+            var height = postText.height(width: width, font: Constants.postLabelFont)
+            
+            let heightLimit = Constants.postLabelFont.lineHeight * Constants.minifiedPostLinesLimit
+            if height > heightLimit {
+                height = Constants.postLabelFont.lineHeight * Constants.minifiedPostLines
+                isMoreTextButtonDisplayed = true
+            }
+            
             postLabelFrame.size = CGSize(width: width, height: height)
         }
         
+        // MARK: - Работа с moreTextButton
+        let moreTextButtonSize = isMoreTextButtonDisplayed ? Constants.moreTextButtonSize : CGSize.zero
+        let moreTextButtonFrame = CGRect(origin: CGPoint(x: Constants.moretextButtonInsets.left,
+                                                         y: postLabelFrame.maxY),
+                                         size: moreTextButtonSize)
+        
         // MARK: - Работа с attachmentFrame
         let attachmentPosY = postLabelFrame.size == CGSize.zero ? Constants.postLabelInsets.top
-                                                                     : postLabelFrame.maxY + Constants.postLabelInsets.bottom
+                                                                : moreTextButtonFrame.maxY + Constants.postLabelInsets.bottom
         var attachmentFrame = CGRect(origin: CGPoint(x: 0, y: attachmentPosY), size: .zero)
         if let photoAttachment {
             let aspectRatio = Float(photoAttachment.height) / Float(photoAttachment.width)
@@ -53,6 +69,7 @@ final class NewsfeedCellLayoutCalculator: FeedCellLayoutCalculator {
         let totalHeight = bottomViewFrame.maxY + Constants.cardViewInsets.bottom
         
         return Sizes(postLabelFrame: postLabelFrame,
+                     moreTextButtonFrame: moreTextButtonFrame,
                      attachmentFrame: attachmentFrame,
                      bottomViewFrame: bottomViewFrame,
                      totalHeight: totalHeight)

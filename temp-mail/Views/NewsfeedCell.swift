@@ -23,14 +23,21 @@ protocol FeedCellPhotoAttachmentViewModel {
 
 protocol FeedCellSizes {
     var postLabelFrame: CGRect { get }
+    var moreTextButtonFrame: CGRect { get }
     var attachmentFrame: CGRect { get }
     var bottomViewFrame: CGRect { get }
     var totalHeight: CGFloat { get }
 }
 
+protocol NewsfeedCellDelegate: AnyObject {
+    func revealPost(for cell: NewsfeedCell)
+}
+
 final class NewsfeedCell: UITableViewCell {
     
     static let identifier = "NewsfeedTableViewCellID"
+    
+    weak var delegate: NewsfeedCellDelegate?
     
     // MARK: - first layer subview
     
@@ -59,6 +66,17 @@ final class NewsfeedCell: UITableViewCell {
         view.numberOfLines = 0
         view.font = Constants.postLabelFont
         view.textColor = .black
+        return view
+    }()
+    
+    private lazy var moreTextButton: UIButton = {
+        let view = UIButton()
+        view.setTitle("Показать полностью...", for: .normal)
+        view.setTitleColor(.blue, for: .normal)
+        view.titleLabel?.font = .systemFont(ofSize: 15, weight: .medium)
+        view.contentHorizontalAlignment = .left
+        view.contentVerticalAlignment = .center
+        view.addTarget(self, action: #selector(moreTextButtonTapped), for: .touchUpInside)
         return view
     }()
     
@@ -204,6 +222,7 @@ final class NewsfeedCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.backgroundColor = .clear
+        self.contentView.backgroundColor = .clear
         self.selectionStyle = .none
         
         layoutFirstLayerSubviews()
@@ -227,6 +246,7 @@ final class NewsfeedCell: UITableViewCell {
         viewsLabel.text = viewModel.views
         
         postLabel.frame = viewModel.sizes.postLabelFrame
+        moreTextButton.frame = viewModel.sizes.moreTextButtonFrame
         postImageView.frame = viewModel.sizes.attachmentFrame
         bottomView.frame = viewModel.sizes.bottomViewFrame
         
@@ -239,19 +259,24 @@ final class NewsfeedCell: UITableViewCell {
     }
     
     private func layoutFirstLayerSubviews() {
-        self.addSubview(cardView)
+        self.contentView.addSubview(cardView)
         
         NSLayoutConstraint.activate([
-            cardView.topAnchor.constraint(equalTo: self.topAnchor, constant: Constants.cardViewInsets.top),
-            cardView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.cardViewInsets.left),
-            cardView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constants.cardViewInsets.right),
-            cardView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -Constants.cardViewInsets.bottom)
+            cardView.topAnchor.constraint(equalTo: self.contentView.topAnchor,
+                                          constant: Constants.cardViewInsets.top),
+            cardView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor,
+                                              constant: Constants.cardViewInsets.left),
+            cardView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor,
+                                               constant: -Constants.cardViewInsets.right),
+            cardView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor,
+                                             constant: -Constants.cardViewInsets.bottom)
         ])
     }
     
     private func layoutSecondLayerSubviews() {
         cardView.addSubview(topView)
         cardView.addSubview(postLabel)
+        cardView.addSubview(moreTextButton)
         cardView.addSubview(postImageView)
         cardView.addSubview(bottomView)
         
@@ -262,6 +287,9 @@ final class NewsfeedCell: UITableViewCell {
             topView.heightAnchor.constraint(equalToConstant: Constants.topViewHeight)
             
             // postlabel constraints
+            // не нужны, так как размеры задаются динамически
+            
+            // moreTextButton constraints
             // не нужны, так как размеры задаются динамически
             
             // postImageView constraints
@@ -358,5 +386,9 @@ final class NewsfeedCell: UITableViewCell {
             label.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             label.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
+    }
+    
+    @objc private func moreTextButtonTapped() {
+        delegate?.revealPost(for: self)
     }
 }
