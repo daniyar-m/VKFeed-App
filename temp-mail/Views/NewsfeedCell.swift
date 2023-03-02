@@ -32,6 +32,8 @@ final class NewsfeedCell: UITableViewCell {
     
     static let identifier = "NewsfeedTableViewCellID"
     
+    // MARK: - first layer subview
+    
     private let cardView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 8
@@ -41,6 +43,9 @@ final class NewsfeedCell: UITableViewCell {
         return view
     }()
     
+    
+    // MARK: - second layer subviews
+    
     private let topView: UIView = {
         let view = UIView()
         view.backgroundColor = .clear
@@ -49,15 +54,27 @@ final class NewsfeedCell: UITableViewCell {
         return view
     }()
     
-    private let bottomView: UIStackView = {
-        let view = UIStackView()
-        view.backgroundColor = .clear
-        view.axis = .horizontal
-        view.distribution = .equalCentering
-        view.alignment = .center
-//        view.translatesAutoresizingMaskIntoConstraints = false
+    private let postLabel: UILabel = {
+        let view = UILabel()
+        view.numberOfLines = 0
+        view.font = Constants.postLabelFont
+        view.textColor = .black
         return view
     }()
+    
+    private let postImageView: WebImageView = {
+        let view = WebImageView()
+        view.backgroundColor = .lightGray
+        return view
+    }()
+    
+    private let bottomView: UIView = {
+        let view = UIView()
+        return view
+    }()
+    
+    
+    // MARK: - third layer subviews - topView
     
     private let avatarImageView: WebImageView = {
         let view = WebImageView()
@@ -69,226 +86,272 @@ final class NewsfeedCell: UITableViewCell {
     
     private let nameLabel: UILabel = {
         let view = UILabel()
-        view.numberOfLines = 1
-        view.sizeToFit()
+        view.numberOfLines = 0
+        view.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        view.textColor = .black
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private let dateLabel: UILabel = {
         let view = UILabel()
-        view.numberOfLines = 1
-        view.sizeToFit()
+        view.font = UIFont.systemFont(ofSize: 12)
+        view.textColor = .lightGray
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private let postLabel: UILabel = {
-        let view = UILabel()
-        view.font = .systemFont(ofSize: 15)
-//        view.numberOfLines = 0
-//        view.lineBreakMode = .byWordWrapping
-//        view.sizeToFit()
-//        view.translatesAutoresizingMaskIntoConstraints = false
+
+    // MARK: - third layer subviews - bottomView
+    
+    private let likesView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private let photoImageView: WebImageView = {
-        let view = WebImageView()
-//        view.translatesAutoresizingMaskIntoConstraints = false
+    private let commentsView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private let likesStackView: UIStackView = {
-        let view = UIStackView()
-        view.axis = .horizontal
-        view.distribution = .fillProportionally
-        view.alignment = .center
-        view.spacing = 4
-        view.sizeToFit()
+    private let repostsView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
+    private let viewsView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    
+    // MARK: - fourth layer subviews - bottomView
     
     private let likesImageView: UIImageView = {
-        let view = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+        let view = UIImageView()
         view.image = UIImage(systemName: "heart")
-        view.sizeToFit()
-        return view
-    }()
-    
-    private let likesCountLabel: UILabel = {
-        let view = UILabel()
-        view.sizeToFit()
-        return view
-    }()
-    
-    private let commentsStackView: UIStackView = {
-        let view = UIStackView()
-        view.axis = .horizontal
-        view.distribution = .fillProportionally
-        view.alignment = .center
-        view.spacing = 4
-        view.sizeToFit()
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private let commentsImageView: UIImageView = {
-        let view = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+        let view = UIImageView()
         view.image = UIImage(systemName: "text.bubble")
-        view.sizeToFit()
-        return view
-    }()
-    
-    private let commentsCountLabel: UILabel = {
-        let view = UILabel()
-        view.sizeToFit()
-        return view
-    }()
-    
-    private let repostsStackView: UIStackView = {
-        let view = UIStackView()
-        view.axis = .horizontal
-        view.distribution = .fillProportionally
-        view.alignment = .center
-        view.spacing = 4
-        view.sizeToFit()
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private let repostsImageView: UIImageView = {
-        let view = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+        let view = UIImageView()
         view.image = UIImage(systemName: "arrowshape.turn.up.forward")
-        view.sizeToFit()
-        return view
-    }()
-    
-    private let repostsCountLabel: UILabel = {
-        let view = UILabel()
-        view.sizeToFit()
-        return view
-    }()
-    
-    private let viewsStackView: UIStackView = {
-        let view = UIStackView()
-        view.axis = .horizontal
-        view.distribution = .fillProportionally
-        view.alignment = .center
-        view.spacing = 4
-        view.sizeToFit()
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private let viewsImageView: UIImageView = {
-        let view = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+        let view = UIImageView()
         view.image = UIImage(systemName: "eye.fill")
-        view.sizeToFit()
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private let viewsCountLabel: UILabel = {
+    private let likesLabel: UILabel = {
         let view = UILabel()
-        view.sizeToFit()
+        view.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        view.textColor = .lightGray
+        view.lineBreakMode = .byClipping
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
+    private let commentsLabel: UILabel = {
+        let view = UILabel()
+        view.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        view.textColor = .lightGray
+        view.lineBreakMode = .byClipping
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private let repostsLabel: UILabel = {
+        let view = UILabel()
+        view.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        view.textColor = .lightGray
+        view.lineBreakMode = .byClipping
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private let viewsLabel: UILabel = {
+        let view = UILabel()
+        view.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        view.textColor = .lightGray
+        view.lineBreakMode = .byClipping
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.backgroundColor = .clear
+        self.selectionStyle = .none
         
-        self.addSubview(cardView)
-        
-        cardView.addSubview(topView)
-        cardView.addSubview(postLabel)
-        cardView.addSubview(photoImageView)
-        cardView.addSubview(bottomView)
-        
-        topView.addSubview(avatarImageView)
-        topView.addSubview(nameLabel)
-        topView.addSubview(dateLabel)
-        
-        bottomView.addArrangedSubview(likesStackView)
-        bottomView.addArrangedSubview(commentsStackView)
-        bottomView.addArrangedSubview(repostsStackView)
-        bottomView.addArrangedSubview(viewsStackView)
-        
-        likesStackView.addArrangedSubview(likesImageView)
-        likesStackView.addArrangedSubview(likesCountLabel)
-        
-        commentsStackView.addArrangedSubview(commentsImageView)
-        commentsStackView.addArrangedSubview(commentsCountLabel)
-        
-        repostsStackView.addArrangedSubview(repostsImageView)
-        repostsStackView.addArrangedSubview(repostsCountLabel)
-        
-        viewsStackView.addArrangedSubview(viewsImageView)
-        viewsStackView.addArrangedSubview(viewsCountLabel)
-        
-        setupConstraints()
+        layoutFirstLayerSubviews()
+        layoutSecondLayerSubviews()
+        layoutThirdLayerSubviews()
+        layoutFourthLayerSubviews()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with viewModel: NewsfeedCellViewModel) {
+    func fill(with viewModel: NewsfeedCellViewModel) {
         avatarImageView.set(imageUrl: viewModel.avatarUrlString)
         nameLabel.text = viewModel.name
         dateLabel.text = viewModel.date
         postLabel.text = viewModel.text
-        likesCountLabel.text = viewModel.likes
-        commentsCountLabel.text = viewModel.comments
-        repostsCountLabel.text = viewModel.reposts
-        viewsCountLabel.text = viewModel.views
+        likesLabel.text = viewModel.likes
+        commentsLabel.text = viewModel.comments
+        repostsLabel.text = viewModel.reposts
+        viewsLabel.text = viewModel.views
         
         postLabel.frame = viewModel.sizes.postLabelFrame
-        photoImageView.frame = viewModel.sizes.attachmentFrame
+        postImageView.frame = viewModel.sizes.attachmentFrame
         bottomView.frame = viewModel.sizes.bottomViewFrame
         
         if let photoAttachment = viewModel.photoAttachment {
-            photoImageView.set(imageUrl: photoAttachment.photoUrlString)
-            photoImageView.isHidden = false
+            postImageView.set(imageUrl: photoAttachment.photoUrlString)
+            postImageView.isHidden = false
         } else {
-            photoImageView.isHidden = true
+            postImageView.isHidden = true
         }
     }
     
-    private func setupConstraints() {
+    private func layoutFirstLayerSubviews() {
+        self.addSubview(cardView)
+        
         NSLayoutConstraint.activate([
-            cardView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
-            cardView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
-            cardView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8),
-            cardView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            cardView.topAnchor.constraint(equalTo: self.topAnchor, constant: Constants.cardViewInsets.top),
+            cardView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.cardViewInsets.left),
+            cardView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constants.cardViewInsets.right),
+            cardView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -Constants.cardViewInsets.bottom)
+        ])
+    }
+    
+    private func layoutSecondLayerSubviews() {
+        cardView.addSubview(topView)
+        cardView.addSubview(postLabel)
+        cardView.addSubview(postImageView)
+        cardView.addSubview(bottomView)
+        
+        NSLayoutConstraint.activate([
+            topView.topAnchor.constraint(equalTo: cardView.topAnchor, constant: Constants.topViewInsets.top),
+            topView.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: Constants.topViewInsets.left),
+            topView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -Constants.topViewInsets.right),
+            topView.heightAnchor.constraint(equalToConstant: Constants.topViewHeight)
             
-            topView.topAnchor.constraint(equalTo: cardView.topAnchor),
-            topView.leadingAnchor.constraint(equalTo: cardView.leadingAnchor),
-            topView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor),
-            topView.heightAnchor.constraint(equalToConstant: 44),
+            // postlabel constraints
+            // не нужны, так как размеры задаются динамически
             
-            avatarImageView.topAnchor.constraint(equalTo: topView.topAnchor, constant: 4),
-            avatarImageView.leadingAnchor.constraint(equalTo: topView.leadingAnchor, constant: 4),
-            avatarImageView.widthAnchor.constraint(equalToConstant: 40),
-            avatarImageView.heightAnchor.constraint(equalToConstant: 40),
+            // postImageView constraints
+            // не нужны, так как размеры задаются динамически
             
-            nameLabel.topAnchor.constraint(equalTo: topView.topAnchor, constant: 4),
-            nameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 4),
-            nameLabel.trailingAnchor.constraint(equalTo: topView.trailingAnchor, constant: -4),
+            // bottomView constraints
+            // не нужны, так как размеры задаются динамически
+        ])
+    }
+    
+    private func layoutThirdLayerSubviews() {
+        topView.addSubview(avatarImageView)
+        topView.addSubview(nameLabel)
+        topView.addSubview(dateLabel)
+        
+        bottomView.addSubview(likesView)
+        bottomView.addSubview(commentsView)
+        bottomView.addSubview(repostsView)
+        bottomView.addSubview(viewsView)
+
+        NSLayoutConstraint.activate([
+            avatarImageView.topAnchor.constraint(equalTo: topView.topAnchor),
+            avatarImageView.leadingAnchor.constraint(equalTo: topView.leadingAnchor),
+            avatarImageView.heightAnchor.constraint(equalToConstant: Constants.topViewHeight),
+            avatarImageView.widthAnchor.constraint(equalToConstant: Constants.topViewHeight),
+
+            nameLabel.topAnchor.constraint(equalTo: topView.topAnchor,
+                                           constant: Constants.nameLabelInsets.top),
+            nameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor,
+                                               constant: Constants.nameLabelInsets.left),
+            nameLabel.trailingAnchor.constraint(equalTo: topView.trailingAnchor,
+                                                constant: -Constants.nameLabelInsets.right),
+            nameLabel.heightAnchor.constraint(equalToConstant: Constants.nameLabelHeight),
             
-            dateLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 2),
-            dateLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 4),
-            dateLabel.trailingAnchor.constraint(equalTo: topView.trailingAnchor, constant: -4),
             
-//            textBodyLabel.topAnchor.constraint(equalTo: topView.bottomAnchor, constant: 4),
-//            textBodyLabel.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 4),
-//            textBodyLabel.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -4),
-//
-//            photoImageView.topAnchor.constraint(equalTo: textBodyLabel.bottomAnchor, constant: 4),
-//            photoImageView.leadingAnchor.constraint(equalTo: cardView.leadingAnchor),
-//            photoImageView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor),
+            dateLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor,
+                                               constant: Constants.dateLabelInsets.left),
+            dateLabel.trailingAnchor.constraint(equalTo: topView.trailingAnchor,
+                                                constant: -Constants.dateLabelInsets.right),
+            dateLabel.bottomAnchor.constraint(equalTo: topView.topAnchor,
+                                           constant: -Constants.dateLabelInsets.bottom),
+            dateLabel.heightAnchor.constraint(equalToConstant: Constants.dateLabelHeight),
             
-//            bottomView.topAnchor.constraint(equalTo: photoImageView.bottomAnchor, constant: 8),
-//            bottomView.bottomAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -8),
-//            bottomView.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 8),
-//            bottomView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -8)
+            
+            likesView.topAnchor.constraint(equalTo: bottomView.topAnchor),
+            likesView.leadingAnchor.constraint(equalTo: bottomView.leadingAnchor),
+            likesView.widthAnchor.constraint(equalToConstant: Constants.bottomViewSubviewWidth),
+            likesView.heightAnchor.constraint(equalToConstant: Constants.bottomViewHeight),
+            
+            commentsView.topAnchor.constraint(equalTo: bottomView.topAnchor),
+            commentsView.leadingAnchor.constraint(equalTo: likesView.trailingAnchor),
+            commentsView.widthAnchor.constraint(equalToConstant: Constants.bottomViewSubviewWidth),
+            commentsView.heightAnchor.constraint(equalToConstant: Constants.bottomViewHeight),
+            
+            repostsView.topAnchor.constraint(equalTo: bottomView.topAnchor),
+            repostsView.leadingAnchor.constraint(equalTo: repostsView.trailingAnchor),
+            repostsView.widthAnchor.constraint(equalToConstant: Constants.bottomViewSubviewWidth),
+            repostsView.heightAnchor.constraint(equalToConstant: Constants.bottomViewHeight),
+            
+            viewsView.topAnchor.constraint(equalTo: bottomView.topAnchor),
+            viewsView.trailingAnchor.constraint(equalTo: bottomView.trailingAnchor),
+            viewsView.widthAnchor.constraint(equalToConstant: Constants.bottomViewSubviewWidth),
+            viewsView.heightAnchor.constraint(equalToConstant: Constants.bottomViewHeight)
+        ])
+    }
+    
+    private func layoutFourthLayerSubviews() {
+        likesView.addSubview(likesImageView)
+        likesView.addSubview(likesLabel)
+        
+        commentsView.addSubview(commentsImageView)
+        commentsView.addSubview(commentsLabel)
+        
+        repostsView.addSubview(repostsImageView)
+        repostsView.addSubview(repostsLabel)
+        
+        viewsView.addSubview(viewsImageView)
+        viewsView.addSubview(viewsLabel)
+        
+        setupConstaintsToFourthLayer(view: likesView, imageView: likesImageView, label: likesLabel)
+        setupConstaintsToFourthLayer(view: commentsView, imageView: commentsImageView, label: commentsLabel)
+        setupConstaintsToFourthLayer(view: repostsView, imageView: repostsImageView, label: repostsLabel)
+        setupConstaintsToFourthLayer(view: viewsView, imageView: viewsImageView, label: viewsLabel)
+    }
+    
+    private func setupConstaintsToFourthLayer(view: UIView, imageView: UIImageView, label: UILabel) {
+        NSLayoutConstraint.activate([
+            imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            imageView.widthAnchor.constraint(equalToConstant: Constants.bottomViewIconSize.width),
+            imageView.heightAnchor.constraint(equalToConstant: Constants.bottomViewIconSize.height),
+
+            label.leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: 4),
+            label.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            label.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
 }

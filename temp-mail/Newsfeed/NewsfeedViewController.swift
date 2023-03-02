@@ -78,7 +78,7 @@ extension NewsfeedViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = newsfeedTableView.dequeueReusableCell(withIdentifier: NewsfeedCell.identifier, for: indexPath) as? NewsfeedCell else { return UITableViewCell() }
-        cell.configure(with: newsfeedViewModel.newsfeedCells[indexPath.row])
+        cell.fill(with: newsfeedViewModel.newsfeedCells[indexPath.row])
         return cell
     }
     

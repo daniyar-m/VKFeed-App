@@ -9,13 +9,6 @@ struct Sizes: FeedCellSizes {
     var totalHeight: CGFloat
 }
 
-struct Constants {
-    static let cardViewInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 12, right: 8)
-    static let topViewHeight: CGFloat = 36
-    static let postLabelInsets: UIEdgeInsets = UIEdgeInsets(top: 8 + Constants.topViewHeight + 8, left: 8, bottom: 8, right: 8)
-    static let postLabelFont = UIFont.systemFont(ofSize: 15)
-}
-
 protocol FeedCellLayoutCalculator {
     func sizes(postText: String?, photoAttachment: FeedCellPhotoAttachmentViewModel?) -> FeedCellSizes
 }
