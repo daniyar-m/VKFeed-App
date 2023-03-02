@@ -78,7 +78,7 @@ final class NewsfeedCell: UITableViewCell {
     
     private let avatarImageView: WebImageView = {
         let view = WebImageView()
-        view.layer.cornerRadius = 20
+        view.layer.cornerRadius = Constants.topViewHeight / 2
         view.clipsToBounds = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -195,6 +195,11 @@ final class NewsfeedCell: UITableViewCell {
         return view
     }()
     
+    override func prepareForReuse() {
+        avatarImageView.set(imageUrl: nil)
+        postImageView.set(imageUrl: nil)
+    }
+    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -296,7 +301,7 @@ final class NewsfeedCell: UITableViewCell {
                                                constant: Constants.dateLabelInsets.left),
             dateLabel.trailingAnchor.constraint(equalTo: topView.trailingAnchor,
                                                 constant: -Constants.dateLabelInsets.right),
-            dateLabel.bottomAnchor.constraint(equalTo: topView.topAnchor,
+            dateLabel.bottomAnchor.constraint(equalTo: topView.bottomAnchor,
                                            constant: -Constants.dateLabelInsets.bottom),
             dateLabel.heightAnchor.constraint(equalToConstant: Constants.dateLabelHeight),
             

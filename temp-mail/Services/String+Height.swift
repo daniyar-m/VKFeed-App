@@ -9,6 +9,6 @@ extension String {
                                      options: .usesLineFragmentOrigin,
                                      attributes: [NSAttributedString.Key.font : font],
                                      context: nil)
-        return size.height
+        return ceil(size.height)
     }
 }
