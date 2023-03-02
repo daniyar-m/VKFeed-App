@@ -308,23 +308,23 @@ final class NewsfeedCell: UITableViewCell {
             
             likesView.topAnchor.constraint(equalTo: bottomView.topAnchor),
             likesView.leadingAnchor.constraint(equalTo: bottomView.leadingAnchor),
-            likesView.widthAnchor.constraint(equalToConstant: Constants.bottomViewSubviewWidth),
-            likesView.heightAnchor.constraint(equalToConstant: Constants.bottomViewHeight),
+            likesView.widthAnchor.constraint(equalToConstant: Constants.bottomSubviewSize.width),
+            likesView.heightAnchor.constraint(equalToConstant: Constants.bottomSubviewSize.height),
             
             commentsView.topAnchor.constraint(equalTo: bottomView.topAnchor),
             commentsView.leadingAnchor.constraint(equalTo: likesView.trailingAnchor),
-            commentsView.widthAnchor.constraint(equalToConstant: Constants.bottomViewSubviewWidth),
-            commentsView.heightAnchor.constraint(equalToConstant: Constants.bottomViewHeight),
+            commentsView.widthAnchor.constraint(equalToConstant: Constants.bottomSubviewSize.width),
+            commentsView.heightAnchor.constraint(equalToConstant: Constants.bottomSubviewSize.height),
             
             repostsView.topAnchor.constraint(equalTo: bottomView.topAnchor),
-            repostsView.leadingAnchor.constraint(equalTo: repostsView.trailingAnchor),
-            repostsView.widthAnchor.constraint(equalToConstant: Constants.bottomViewSubviewWidth),
-            repostsView.heightAnchor.constraint(equalToConstant: Constants.bottomViewHeight),
+            repostsView.leadingAnchor.constraint(equalTo: commentsView.trailingAnchor),
+            repostsView.widthAnchor.constraint(equalToConstant: Constants.bottomSubviewSize.width),
+            repostsView.heightAnchor.constraint(equalToConstant: Constants.bottomSubviewSize.height),
             
             viewsView.topAnchor.constraint(equalTo: bottomView.topAnchor),
             viewsView.trailingAnchor.constraint(equalTo: bottomView.trailingAnchor),
-            viewsView.widthAnchor.constraint(equalToConstant: Constants.bottomViewSubviewWidth),
-            viewsView.heightAnchor.constraint(equalToConstant: Constants.bottomViewHeight)
+            viewsView.widthAnchor.constraint(equalToConstant: Constants.bottomSubviewSize.width),
+            viewsView.heightAnchor.constraint(equalToConstant: Constants.bottomSubviewSize.height)
         ])
     }
     
@@ -354,7 +354,7 @@ final class NewsfeedCell: UITableViewCell {
             imageView.widthAnchor.constraint(equalToConstant: Constants.bottomViewIconSize.width),
             imageView.heightAnchor.constraint(equalToConstant: Constants.bottomViewIconSize.height),
 
-            label.leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: 4),
+            label.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 4),
             label.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             label.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])

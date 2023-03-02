@@ -47,7 +47,7 @@ final class NewsfeedCellLayoutCalculator: FeedCellLayoutCalculator {
         // MARK: - Работа с bottomViewFrame
         let bottomViewPosY = max(postLabelFrame.maxY, attachmentFrame.maxY)
         let bottomViewFrame = CGRect(origin: CGPoint(x: 0, y: bottomViewPosY),
-                                     size: CGSize(width: cardViewWidth, height: Constants.bottomViewHeight))
+                                     size: CGSize(width: cardViewWidth, height: Constants.bottomSubviewSize.height))
         
         // MARK: - Работа с bottomViewFrame
         let totalHeight = bottomViewFrame.maxY + Constants.cardViewInsets.bottom
