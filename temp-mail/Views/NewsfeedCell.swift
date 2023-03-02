@@ -55,7 +55,7 @@ final class NewsfeedCell: UITableViewCell {
         view.axis = .horizontal
         view.distribution = .equalCentering
         view.alignment = .center
-        view.translatesAutoresizingMaskIntoConstraints = false
+//        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -83,10 +83,11 @@ final class NewsfeedCell: UITableViewCell {
         return view
     }()
     
-    private let textBodyLabel: UILabel = {
+    private let postLabel: UILabel = {
         let view = UILabel()
-        view.numberOfLines = 0
-        view.lineBreakMode = .byWordWrapping
+        view.font = .systemFont(ofSize: 15)
+//        view.numberOfLines = 0
+//        view.lineBreakMode = .byWordWrapping
 //        view.sizeToFit()
 //        view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -197,7 +198,7 @@ final class NewsfeedCell: UITableViewCell {
         self.addSubview(cardView)
         
         cardView.addSubview(topView)
-        cardView.addSubview(textBodyLabel)
+        cardView.addSubview(postLabel)
         cardView.addSubview(photoImageView)
         cardView.addSubview(bottomView)
         
@@ -233,15 +234,15 @@ final class NewsfeedCell: UITableViewCell {
         avatarImageView.set(imageUrl: viewModel.avatarUrlString)
         nameLabel.text = viewModel.name
         dateLabel.text = viewModel.date
-        textBodyLabel.text = viewModel.text
+        postLabel.text = viewModel.text
         likesCountLabel.text = viewModel.likes
         commentsCountLabel.text = viewModel.comments
         repostsCountLabel.text = viewModel.reposts
         viewsCountLabel.text = viewModel.views
         
-        textBodyLabel.frame = viewModel.sizes.postLabelFrame
+        postLabel.frame = viewModel.sizes.postLabelFrame
         photoImageView.frame = viewModel.sizes.attachmentFrame
-//        bottomView.frame = viewModel.sizes.bottomViewFrame
+        bottomView.frame = viewModel.sizes.bottomViewFrame
         
         if let photoAttachment = viewModel.photoAttachment {
             photoImageView.set(imageUrl: photoAttachment.photoUrlString)
@@ -284,10 +285,10 @@ final class NewsfeedCell: UITableViewCell {
 //            photoImageView.leadingAnchor.constraint(equalTo: cardView.leadingAnchor),
 //            photoImageView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor),
             
-            bottomView.topAnchor.constraint(equalTo: photoImageView.bottomAnchor, constant: 8),
-            bottomView.bottomAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -8),
-            bottomView.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 8),
-            bottomView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -8)
+//            bottomView.topAnchor.constraint(equalTo: photoImageView.bottomAnchor, constant: 8),
+//            bottomView.bottomAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -8),
+//            bottomView.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 8),
+//            bottomView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -8)
         ])
     }
 }
