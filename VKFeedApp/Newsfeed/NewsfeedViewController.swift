@@ -92,7 +92,6 @@ extension NewsfeedViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension NewsfeedViewController: NewsfeedCellDelegate {
     func revealPost(for cell: NewsfeedCell) {
-        print("WAZAP")
         guard let indexPath = newsfeedTableView.indexPath(for: cell) else { return }
         let cellViewModel = newsfeedViewModel.newsfeedCells[indexPath.row]
         interactor?.doSomething(request: .revealPostIDs(id: cellViewModel.postId))
