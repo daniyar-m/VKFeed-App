@@ -21,23 +21,32 @@ class NewsfeedPresenter: NewsfeedPresentationLogic {
     
     func presentSomething(response: Newsfeed.Model.Response.ResponseType) {
         switch response {
-        case .presentNewsfeed(let feedResponse):
+        case .presentNewsfeed(let feedResponse, let revealedPostIDs):
             print(".presentNewsfeed Presenter")
+            print(revealedPostIDs)
             let cells = feedResponse.items.map { cellViewModel(from: $0,
                                                                profiles: feedResponse.profiles,
-                                                               groups: feedResponse.groups) }
+                                                               groups: feedResponse.groups,
+                                                               revealedPostIDs: revealedPostIDs) }
             let feedViewModel = NewsfeedViewModel(newsfeedCells: cells)
             viewController?.displaySomething(viewModel: .displayNewsfeed(feedViewModel))
         }
     }
      
-    private func cellViewModel(from feedItem: FeedItem, profiles: [Profile], groups: [Group]) -> NewsfeedViewModel.NewsfeedCell {
+    private func cellViewModel(from feedItem: FeedItem,
+                               profiles: [Profile],
+                               groups: [Group],
+                               revealedPostIDs: [Int]) -> NewsfeedViewModel.NewsfeedCell {
         let profile = profile(for: feedItem.sourceId, profiles: profiles, groups: groups)
         let date = Date(timeIntervalSince1970: feedItem.date)
         let dateTitle = dateFormatter.string(from: date)
         let photoAttachment = photoAttachment(feedItem: feedItem)
-        let sizes = cellLayoutCalculator.sizes(postText: feedItem.text, photoAttachment: photoAttachment)
-        return NewsfeedViewModel.NewsfeedCell(avatarUrlString: profile?.photo ?? "",
+        let isFullSizedPost = revealedPostIDs.contains(feedItem.postId)
+        let sizes = cellLayoutCalculator.sizes(postText: feedItem.text,
+                                               photoAttachment: photoAttachment,
+                                               isFullSizedPost: isFullSizedPost)
+        return NewsfeedViewModel.NewsfeedCell(postId: feedItem.postId,
+                                              avatarUrlString: profile?.photo ?? "",
                                               name: profile?.name ?? "",
                                               date: dateTitle,
                                               text: feedItem.text,

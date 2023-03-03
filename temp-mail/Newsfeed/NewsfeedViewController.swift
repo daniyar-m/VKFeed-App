@@ -56,8 +56,6 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
         newsfeedTableView.dataSource = self
         newsfeedTableView.register(NewsfeedCell.self, forCellReuseIdentifier: NewsfeedCell.identifier)
         newsfeedTableView.separatorStyle = .none
-//        newsfeedTableView.estimatedRowHeight = 1
-//        newsfeedTableView.rowHeight = UITableView.automaticDimension
     }
         
     func displaySomething(viewModel: Newsfeed.Model.ViewModel.ViewModelData) {
@@ -86,10 +84,17 @@ extension NewsfeedViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return newsfeedViewModel.newsfeedCells[indexPath.row].sizes.totalHeight
     }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return newsfeedViewModel.newsfeedCells[indexPath.row].sizes.totalHeight
+    }
 }
 
 extension NewsfeedViewController: NewsfeedCellDelegate {
     func revealPost(for cell: NewsfeedCell) {
         print("WAZAP")
+        guard let indexPath = newsfeedTableView.indexPath(for: cell) else { return }
+        let cellViewModel = newsfeedViewModel.newsfeedCells[indexPath.row]
+        interactor?.doSomething(request: .revealPostIDs(id: cellViewModel.postId))
     }
 }

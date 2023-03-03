@@ -11,7 +11,7 @@ struct Sizes: FeedCellSizes {
 }
 
 protocol FeedCellLayoutCalculator {
-    func sizes(postText: String?, photoAttachment: FeedCellPhotoAttachmentViewModel?) -> FeedCellSizes
+    func sizes(postText: String?, photoAttachment: FeedCellPhotoAttachmentViewModel?, isFullSizedPost: Bool) -> FeedCellSizes
 }
 
 final class NewsfeedCellLayoutCalculator: FeedCellLayoutCalculator {
@@ -22,7 +22,7 @@ final class NewsfeedCellLayoutCalculator: FeedCellLayoutCalculator {
         self.screenWidth = screenWidth
     }
     
-    func sizes(postText: String?, photoAttachment: FeedCellPhotoAttachmentViewModel?) -> FeedCellSizes {
+    func sizes(postText: String?, photoAttachment: FeedCellPhotoAttachmentViewModel?, isFullSizedPost: Bool) -> FeedCellSizes {
         
         var isMoreTextButtonDisplayed = false
         
@@ -37,7 +37,7 @@ final class NewsfeedCellLayoutCalculator: FeedCellLayoutCalculator {
             var height = postText.height(width: width, font: Constants.postLabelFont)
             
             let heightLimit = Constants.postLabelFont.lineHeight * Constants.minifiedPostLinesLimit
-            if height > heightLimit {
+            if !isFullSizedPost && height > heightLimit {
                 height = Constants.postLabelFont.lineHeight * Constants.minifiedPostLines
                 isMoreTextButtonDisplayed = true
             }

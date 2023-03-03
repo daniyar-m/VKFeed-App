@@ -93,7 +93,6 @@
 			children = (
 				5CA91AAB299517390047F36D /* NewsfeedCell.swift */,
 				5CA91AA02995108F0047F36D /* LaunchScreen.storyboard */,
-				5CA11F2A29A5378F00A082D9 /* NewsfeedCellLayoutCalculator.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -105,6 +104,7 @@
 				5C3DA2F02996981100449A18 /* AuthService.swift */,
 				5C24AA9E299A555B00CA4646 /* DefaultNetworkingService.swift */,
 				5C24AAA4299E504200CA4646 /* NetworkDataFetcher.swift */,
+				5CA11F2A29A5378F00A082D9 /* NewsfeedCellLayoutCalculator.swift */,
 				5C24AAA2299E499E00CA4646 /* FeedResponse.swift */,
 				5C572A0829A127B500F4E61F /* WebImageView.swift */,
 				5CA11F2C29B0B8A600A082D9 /* String+Height.swift */,
