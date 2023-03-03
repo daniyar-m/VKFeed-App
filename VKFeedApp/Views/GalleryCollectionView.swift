@@ -7,9 +7,9 @@ final class GalleryCollectionView: UICollectionView {
     var photos: [FeedCellPhotoAttachmentViewModel] = []
     
     init() {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        super.init(frame: .zero, collectionViewLayout: layout)
+        let rowLayout = RowLayout()
+//        rowLayout.scrollDirection = .horizontal
+        super.init(frame: .zero, collectionViewLayout: rowLayout)
         self.delegate = self
         self.dataSource = self
         self.register(GalleryCollectionViewCell.self, forCellWithReuseIdentifier: GalleryCollectionViewCell.identifier)
@@ -26,7 +26,7 @@ final class GalleryCollectionView: UICollectionView {
     }
 }
 
-extension GalleryCollectionView: UICollectionViewDelegate, UICollectionViewDataSource {
+extension GalleryCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photos.count
     }
@@ -35,5 +35,9 @@ extension GalleryCollectionView: UICollectionViewDelegate, UICollectionViewDataS
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GalleryCollectionViewCell.identifier, for: indexPath) as? GalleryCollectionViewCell else { return UICollectionViewCell() }
         cell.set(imageUrl: photos[indexPath.row].photoUrlString)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: frame.width, height: frame.height)
     }
 }
