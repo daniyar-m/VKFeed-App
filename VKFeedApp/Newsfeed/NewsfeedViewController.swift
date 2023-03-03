@@ -12,7 +12,14 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
     
     private var newsfeedViewModel = NewsfeedViewModel(newsfeedCells: [])
     
-// MARK: Setup
+    private let newsfeedTableView: UITableView = {
+        let view = UITableView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor(red: 0.93, green: 0.93, blue: 0.95, alpha: 1.00)
+        return view
+    }()
+    
+// MARK: -  Setup
     
     private func setup() {
         let viewController = self
@@ -27,14 +34,7 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
         router.dataStore = interactor
     }
     
-// MARK: View lifecycle
-    
-    private let newsfeedTableView: UITableView = {
-        let view = UITableView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(red: 0.93, green: 0.93, blue: 0.95, alpha: 1.00)
-        return view
-    }()
+// MARK: - View lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,13 +50,6 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
         configureNewsfeedTableView()
         interactor?.doSomething(request: .getNewsfeed)
     }
-    
-    private func configureNewsfeedTableView() {
-        newsfeedTableView.delegate = self
-        newsfeedTableView.dataSource = self
-        newsfeedTableView.register(NewsfeedCell.self, forCellReuseIdentifier: NewsfeedCell.identifier)
-        newsfeedTableView.separatorStyle = .none
-    }
         
     func displaySomething(viewModel: Newsfeed.Model.ViewModel.ViewModelData) {
         switch viewModel {
@@ -65,6 +58,13 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
             self.newsfeedViewModel = feedViewModel
             newsfeedTableView.reloadData()
         }
+    }
+    
+    private func configureNewsfeedTableView() {
+        newsfeedTableView.delegate = self
+        newsfeedTableView.dataSource = self
+        newsfeedTableView.register(NewsfeedCell.self, forCellReuseIdentifier: NewsfeedCell.identifier)
+        newsfeedTableView.separatorStyle = .none
     }
 }
 

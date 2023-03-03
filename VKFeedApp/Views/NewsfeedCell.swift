@@ -86,6 +86,8 @@ final class NewsfeedCell: UITableViewCell {
         return view
     }()
     
+    private let galleryCollectionView = GalleryCollectionView()
+    
     private let bottomView: UIView = {
         let view = UIView()
         return view
@@ -247,14 +249,21 @@ final class NewsfeedCell: UITableViewCell {
         
         postLabel.frame = viewModel.sizes.postLabelFrame
         moreTextButton.frame = viewModel.sizes.moreTextButtonFrame
-        postImageView.frame = viewModel.sizes.attachmentFrame
         bottomView.frame = viewModel.sizes.bottomViewFrame
         
         if let photoAttachment = viewModel.photoAttachments.first, viewModel.photoAttachments.count == 1 {
             postImageView.set(imageUrl: photoAttachment.photoUrlString)
             postImageView.isHidden = false
+            galleryCollectionView.isHidden = true
+            postImageView.frame = viewModel.sizes.attachmentFrame
+        } else if viewModel.photoAttachments.count > 1 {
+            postImageView.isHidden = true
+            galleryCollectionView.isHidden = false
+            galleryCollectionView.frame = viewModel.sizes.attachmentFrame
+            galleryCollectionView.fill(with: viewModel.photoAttachments)
         } else {
             postImageView.isHidden = true
+            galleryCollectionView.isHidden = true
         }
     }
     
@@ -278,6 +287,7 @@ final class NewsfeedCell: UITableViewCell {
         cardView.addSubview(postLabel)
         cardView.addSubview(moreTextButton)
         cardView.addSubview(postImageView)
+        cardView.addSubview(galleryCollectionView)
         cardView.addSubview(bottomView)
         
         NSLayoutConstraint.activate([
@@ -293,6 +303,9 @@ final class NewsfeedCell: UITableViewCell {
             // не нужны, так как размеры задаются динамически
             
             // postImageView constraints
+            // не нужны, так как размеры задаются динамически
+            
+            // galleryCollectionView constraints
             // не нужны, так как размеры задаются динамически
             
             // bottomView constraints

@@ -30,6 +30,7 @@
 		5CA91AA22995108F0047F36D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CA91AA02995108F0047F36D /* LaunchScreen.storyboard */; };
 		5CA91AAC299517390047F36D /* NewsfeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA91AAB299517390047F36D /* NewsfeedCell.swift */; };
 		5CDD113729B2730E008FD8CA /* GalleryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDD113629B2730E008FD8CA /* GalleryCollectionView.swift */; };
+		5CDD113929B2763C008FD8CA /* GalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDD113829B2763C008FD8CA /* GalleryCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		5CA91AA32995108F0047F36D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5CA91AAB299517390047F36D /* NewsfeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedCell.swift; sourceTree = "<group>"; };
 		5CDD113629B2730E008FD8CA /* GalleryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionView.swift; sourceTree = "<group>"; };
+		5CDD113829B2763C008FD8CA /* GalleryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewCell.swift; sourceTree = "<group>"; };
 		69E5C3F5CC96A95B3D8DC191 /* Pods-VKFeedApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKFeedApp.debug.xcconfig"; path = "Target Support Files/Pods-VKFeedApp/Pods-VKFeedApp.debug.xcconfig"; sourceTree = "<group>"; };
 		846F6E0CFC9DE36CDC04DB94 /* Pods_VKFeedApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VKFeedApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2E5712297C0345CFE8F48FC /* Pods-VKFeedApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKFeedApp.release.xcconfig"; path = "Target Support Files/Pods-VKFeedApp/Pods-VKFeedApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				5CA91AAB299517390047F36D /* NewsfeedCell.swift */,
 				5CA91AA02995108F0047F36D /* LaunchScreen.storyboard */,
 				5CDD113629B2730E008FD8CA /* GalleryCollectionView.swift */,
+				5CDD113829B2763C008FD8CA /* GalleryCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				5C572A05299E735600F4E61F /* NewsfeedModels.swift in Sources */,
 				5CA11F2D29B0B8A600A082D9 /* String+Height.swift in Sources */,
 				5CA91A982995108E0047F36D /* SceneDelegate.swift in Sources */,
+				5CDD113929B2763C008FD8CA /* GalleryCollectionViewCell.swift in Sources */,
 				5C3DA2F12996981100449A18 /* AuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

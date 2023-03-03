@@ -59,15 +59,13 @@ final class NewsfeedCellLayoutCalculator: FeedCellLayoutCalculator {
         let attachmentPosY = postLabelFrame.size == CGSize.zero ? Constants.postLabelInsets.top
                                                                 : moreTextButtonFrame.maxY + Constants.postLabelInsets.bottom
         var attachmentFrame = CGRect(origin: CGPoint(x: 0, y: attachmentPosY), size: .zero)
-        
-//        if let photoAttachment {
-//            let aspectRatio = Float(photoAttachment.height) / Float(photoAttachment.width)
-//            attachmentFrame.size = CGSize(width: cardViewWidth, height: cardViewWidth * CGFloat(aspectRatio))
-//        }
-        
+                
         if let attachment = photoAttachments.first {
             let aspectRatio = Float(attachment.height) / Float(attachment.width)
             if photoAttachments.count == 1 {
+                attachmentFrame.size = CGSize(width: cardViewWidth, height: cardViewWidth * CGFloat(aspectRatio))
+            } else if photoAttachments.count > 1 {
+                print("More then 1 photo")
                 attachmentFrame.size = CGSize(width: cardViewWidth, height: cardViewWidth * CGFloat(aspectRatio))
             }
         }
