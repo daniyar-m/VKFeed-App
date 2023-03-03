@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_temp_mailVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_temp_mailVersionString[];
+FOUNDATION_EXPORT double Pods_VKFeedAppVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_VKFeedAppVersionString[];
 

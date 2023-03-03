@@ -1,6 +1,0 @@
-framework module Pods_temp_mail {
-  umbrella header "Pods-temp-mail-umbrella.h"
-
-  export *
-  module * { export * }
-}

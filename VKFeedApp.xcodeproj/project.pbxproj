@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5BFDF24B4468E321A53CE6CB /* Pods_VKFeedApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 846F6E0CFC9DE36CDC04DB94 /* Pods_VKFeedApp.framework */; };
 		5C24AA9A299A34F000CA4646 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C24AA99299A34F000CA4646 /* AuthViewController.swift */; };
 		5C24AA9F299A555B00CA4646 /* DefaultNetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C24AA9E299A555B00CA4646 /* DefaultNetworkingService.swift */; };
 		5C24AAA1299A571900CA4646 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C24AAA0299A571900CA4646 /* API.swift */; };
@@ -28,10 +29,11 @@
 		5CA91A9F2995108F0047F36D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CA91A9E2995108F0047F36D /* Assets.xcassets */; };
 		5CA91AA22995108F0047F36D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CA91AA02995108F0047F36D /* LaunchScreen.storyboard */; };
 		5CA91AAC299517390047F36D /* NewsfeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA91AAB299517390047F36D /* NewsfeedCell.swift */; };
-		B8F2944560C8D7DBD9054355 /* Pods_temp_mail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5CEF72C7325661C64127699 /* Pods_temp_mail.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		131821B2C63ED6EBA07EA39B /* Pods-VKFeed App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKFeed App.release.xcconfig"; path = "Target Support Files/Pods-VKFeed App/Pods-VKFeed App.release.xcconfig"; sourceTree = "<group>"; };
+		25E89F6C9421B8FBCEC41747 /* Pods-VKFeed App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKFeed App.debug.xcconfig"; path = "Target Support Files/Pods-VKFeed App/Pods-VKFeed App.debug.xcconfig"; sourceTree = "<group>"; };
 		32FE4E4D53D1FF6360A78DAA /* Pods-temp-mail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-temp-mail.release.xcconfig"; path = "Target Support Files/Pods-temp-mail/Pods-temp-mail.release.xcconfig"; sourceTree = "<group>"; };
 		5C24AA99299A34F000CA4646 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		5C24AA9E299A555B00CA4646 /* DefaultNetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNetworkingService.swift; sourceTree = "<group>"; };
@@ -49,14 +51,16 @@
 		5CA11F2A29A5378F00A082D9 /* NewsfeedCellLayoutCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedCellLayoutCalculator.swift; sourceTree = "<group>"; };
 		5CA11F2C29B0B8A600A082D9 /* String+Height.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Height.swift"; sourceTree = "<group>"; };
 		5CA11F2E29B0C21B00A082D9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		5CA91A922995108E0047F36D /* temp-mail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "temp-mail.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CA91A922995108E0047F36D /* VKFeedApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKFeedApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CA91A952995108E0047F36D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5CA91A972995108E0047F36D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		5CA91A9E2995108F0047F36D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5CA91AA12995108F0047F36D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5CA91AA32995108F0047F36D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5CA91AAB299517390047F36D /* NewsfeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedCell.swift; sourceTree = "<group>"; };
-		A5CEF72C7325661C64127699 /* Pods_temp_mail.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_temp_mail.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		69E5C3F5CC96A95B3D8DC191 /* Pods-VKFeedApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKFeedApp.debug.xcconfig"; path = "Target Support Files/Pods-VKFeedApp/Pods-VKFeedApp.debug.xcconfig"; sourceTree = "<group>"; };
+		846F6E0CFC9DE36CDC04DB94 /* Pods_VKFeedApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VKFeedApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2E5712297C0345CFE8F48FC /* Pods-VKFeedApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKFeedApp.release.xcconfig"; path = "Target Support Files/Pods-VKFeedApp/Pods-VKFeedApp.release.xcconfig"; sourceTree = "<group>"; };
 		EAB909E913C5B6B4C1D13381 /* Pods-temp-mail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-temp-mail.debug.xcconfig"; path = "Target Support Files/Pods-temp-mail/Pods-temp-mail.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,7 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8F2944560C8D7DBD9054355 /* Pods_temp_mail.framework in Frameworks */,
+				5BFDF24B4468E321A53CE6CB /* Pods_VKFeedApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,7 +79,7 @@
 		491B41834D9596C460CB9F19 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A5CEF72C7325661C64127699 /* Pods_temp_mail.framework */,
+				846F6E0CFC9DE36CDC04DB94 /* Pods_VKFeedApp.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -129,7 +133,7 @@
 		5CA91A892995108E0047F36D = {
 			isa = PBXGroup;
 			children = (
-				5CA91A942995108E0047F36D /* temp-mail */,
+				5CA91A942995108E0047F36D /* VKFeedApp */,
 				5CA91A932995108E0047F36D /* Products */,
 				61BAC1754AC3817DF018DCA4 /* Pods */,
 				491B41834D9596C460CB9F19 /* Frameworks */,
@@ -139,12 +143,12 @@
 		5CA91A932995108E0047F36D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5CA91A922995108E0047F36D /* temp-mail.app */,
+				5CA91A922995108E0047F36D /* VKFeedApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5CA91A942995108E0047F36D /* temp-mail */ = {
+		5CA91A942995108E0047F36D /* VKFeedApp */ = {
 			isa = PBXGroup;
 			children = (
 				5CA91A952995108E0047F36D /* AppDelegate.swift */,
@@ -156,7 +160,7 @@
 				5CA91A9E2995108F0047F36D /* Assets.xcassets */,
 				5CA91AA32995108F0047F36D /* Info.plist */,
 			);
-			path = "temp-mail";
+			path = VKFeedApp;
 			sourceTree = "<group>";
 		};
 		61BAC1754AC3817DF018DCA4 /* Pods */ = {
@@ -164,6 +168,10 @@
 			children = (
 				EAB909E913C5B6B4C1D13381 /* Pods-temp-mail.debug.xcconfig */,
 				32FE4E4D53D1FF6360A78DAA /* Pods-temp-mail.release.xcconfig */,
+				25E89F6C9421B8FBCEC41747 /* Pods-VKFeed App.debug.xcconfig */,
+				131821B2C63ED6EBA07EA39B /* Pods-VKFeed App.release.xcconfig */,
+				69E5C3F5CC96A95B3D8DC191 /* Pods-VKFeedApp.debug.xcconfig */,
+				E2E5712297C0345CFE8F48FC /* Pods-VKFeedApp.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -171,9 +179,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5CA91A912995108E0047F36D /* temp-mail */ = {
+		5CA91A912995108E0047F36D /* VKFeedApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5CA91AA62995108F0047F36D /* Build configuration list for PBXNativeTarget "temp-mail" */;
+			buildConfigurationList = 5CA91AA62995108F0047F36D /* Build configuration list for PBXNativeTarget "VKFeedApp" */;
 			buildPhases = (
 				F43EE9C436A131A0745FA45A /* [CP] Check Pods Manifest.lock */,
 				5CA91A8E2995108E0047F36D /* Sources */,
@@ -185,9 +193,9 @@
 			);
 			dependencies = (
 			);
-			name = "temp-mail";
+			name = VKFeedApp;
 			productName = "temp-mail";
-			productReference = 5CA91A922995108E0047F36D /* temp-mail.app */;
+			productReference = 5CA91A922995108E0047F36D /* VKFeedApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -205,7 +213,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5CA91A8D2995108E0047F36D /* Build configuration list for PBXProject "temp-mail" */;
+			buildConfigurationList = 5CA91A8D2995108E0047F36D /* Build configuration list for PBXProject "VKFeedApp" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -218,7 +226,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5CA91A912995108E0047F36D /* temp-mail */,
+				5CA91A912995108E0047F36D /* VKFeedApp */,
 			);
 		};
 /* End PBXProject section */
@@ -242,15 +250,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-temp-mail/Pods-temp-mail-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-VKFeedApp/Pods-VKFeedApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-temp-mail/Pods-temp-mail-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-VKFeedApp/Pods-VKFeedApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-temp-mail/Pods-temp-mail-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VKFeedApp/Pods-VKFeedApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F43EE9C436A131A0745FA45A /* [CP] Check Pods Manifest.lock */ = {
@@ -268,7 +276,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-temp-mail-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-VKFeedApp-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -434,7 +442,7 @@
 		};
 		5CA91AA72995108F0047F36D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EAB909E913C5B6B4C1D13381 /* Pods-temp-mail.debug.xcconfig */;
+			baseConfigurationReference = 69E5C3F5CC96A95B3D8DC191 /* Pods-VKFeedApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -442,17 +450,18 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 34LPHPDCF6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "temp-mail/Info.plist";
+				INFOPLIST_FILE = VKFeedApp/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.daniyar.temp-mail";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.daniyar.vkfeed-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -462,7 +471,7 @@
 		};
 		5CA91AA82995108F0047F36D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 32FE4E4D53D1FF6360A78DAA /* Pods-temp-mail.release.xcconfig */;
+			baseConfigurationReference = E2E5712297C0345CFE8F48FC /* Pods-VKFeedApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -470,17 +479,18 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 34LPHPDCF6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "temp-mail/Info.plist";
+				INFOPLIST_FILE = VKFeedApp/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.daniyar.temp-mail";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.daniyar.vkfeed-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -491,7 +501,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5CA91A8D2995108E0047F36D /* Build configuration list for PBXProject "temp-mail" */ = {
+		5CA91A8D2995108E0047F36D /* Build configuration list for PBXProject "VKFeedApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5CA91AA42995108F0047F36D /* Debug */,
@@ -500,7 +510,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5CA91AA62995108F0047F36D /* Build configuration list for PBXNativeTarget "temp-mail" */ = {
+		5CA91AA62995108F0047F36D /* Build configuration list for PBXNativeTarget "VKFeedApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5CA91AA72995108F0047F36D /* Debug */,
