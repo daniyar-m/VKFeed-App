@@ -8,7 +8,6 @@ final class GalleryCollectionView: UICollectionView {
     
     init() {
         let rowLayout = RowLayout()
-//        rowLayout.scrollDirection = .horizontal
         super.init(frame: .zero, collectionViewLayout: rowLayout)
         self.delegate = self
         self.dataSource = self
