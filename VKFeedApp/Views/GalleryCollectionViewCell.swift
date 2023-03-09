@@ -9,14 +9,12 @@ final class GalleryCollectionViewCell: UICollectionViewCell {
     private let photoImageView: WebImageView = {
         let view = WebImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.contentMode = .scaleAspectFit
-        view.backgroundColor = .yellow
+        view.contentMode = .scaleAspectFill
         return view
     }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.backgroundColor = .orange
         contentView.addSubview(photoImageView)
         NSLayoutConstraint.activate([
             photoImageView.topAnchor.constraint(equalTo: self.contentView.topAnchor),
@@ -24,6 +22,14 @@ final class GalleryCollectionViewCell: UICollectionViewCell {
             photoImageView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
             photoImageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor)
         ])
+    }
+    
+    override func layoutSubviews() {
+        photoImageView.layer.cornerRadius = 8
+        photoImageView.clipsToBounds = true
+        self.layer.shadowRadius = 3
+        self.layer.shadowOpacity = 0.4
+        self.layer.shadowOffset = CGSize(width: 2.5, height: 4)
     }
     
     required init?(coder: NSCoder) {
