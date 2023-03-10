@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5BFDF24B4468E321A53CE6CB /* Pods_VKFeedApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 846F6E0CFC9DE36CDC04DB94 /* Pods_VKFeedApp.framework */; };
+		5C14505D29BB4EB200F5B5AA /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C14505C29BB4EB200F5B5AA /* TitleView.swift */; };
+		5C14505F29BB4EFC00F5B5AA /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C14505E29BB4EFC00F5B5AA /* CustomTextField.swift */; };
 		5C24AA9A299A34F000CA4646 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C24AA99299A34F000CA4646 /* AuthViewController.swift */; };
 		5C24AA9F299A555B00CA4646 /* DefaultNetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C24AA9E299A555B00CA4646 /* DefaultNetworkingService.swift */; };
 		5C24AAA1299A571900CA4646 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C24AAA0299A571900CA4646 /* API.swift */; };
@@ -38,6 +40,8 @@
 		131821B2C63ED6EBA07EA39B /* Pods-VKFeed App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKFeed App.release.xcconfig"; path = "Target Support Files/Pods-VKFeed App/Pods-VKFeed App.release.xcconfig"; sourceTree = "<group>"; };
 		25E89F6C9421B8FBCEC41747 /* Pods-VKFeed App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKFeed App.debug.xcconfig"; path = "Target Support Files/Pods-VKFeed App/Pods-VKFeed App.debug.xcconfig"; sourceTree = "<group>"; };
 		32FE4E4D53D1FF6360A78DAA /* Pods-temp-mail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-temp-mail.release.xcconfig"; path = "Target Support Files/Pods-temp-mail/Pods-temp-mail.release.xcconfig"; sourceTree = "<group>"; };
+		5C14505C29BB4EB200F5B5AA /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
+		5C14505E29BB4EFC00F5B5AA /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		5C24AA99299A34F000CA4646 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		5C24AA9E299A555B00CA4646 /* DefaultNetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNetworkingService.swift; sourceTree = "<group>"; };
 		5C24AAA0299A571900CA4646 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -101,11 +105,13 @@
 		5C24AA9C299A551B00CA4646 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5CA91AA02995108F0047F36D /* LaunchScreen.storyboard */,
 				5CA91AAB299517390047F36D /* NewsfeedCell.swift */,
 				5CDD113629B2730E008FD8CA /* GalleryCollectionView.swift */,
 				5CDD113829B2763C008FD8CA /* GalleryCollectionViewCell.swift */,
 				5CA4AB3F29B299D000DFFE3D /* RowLayout.swift */,
-				5CA91AA02995108F0047F36D /* LaunchScreen.storyboard */,
+				5C14505C29BB4EB200F5B5AA /* TitleView.swift */,
+				5C14505E29BB4EFC00F5B5AA /* CustomTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -314,10 +320,12 @@
 				5CA4AB4029B299D000DFFE3D /* RowLayout.swift in Sources */,
 				5C572A07299E735600F4E61F /* NewsfeedInteractor.swift in Sources */,
 				5CDD113729B2730E008FD8CA /* GalleryCollectionView.swift in Sources */,
+				5C14505D29BB4EB200F5B5AA /* TitleView.swift in Sources */,
 				5CA91A962995108E0047F36D /* AppDelegate.swift in Sources */,
 				5CA11F2B29A5378F00A082D9 /* NewsfeedCellLayoutCalculator.swift in Sources */,
 				5C572A05299E735600F4E61F /* NewsfeedModels.swift in Sources */,
 				5CA11F2D29B0B8A600A082D9 /* String+Height.swift in Sources */,
+				5C14505F29BB4EFC00F5B5AA /* CustomTextField.swift in Sources */,
 				5CA91A982995108E0047F36D /* SceneDelegate.swift in Sources */,
 				5CDD113929B2763C008FD8CA /* GalleryCollectionViewCell.swift in Sources */,
 				5C3DA2F12996981100449A18 /* AuthService.swift in Sources */,

@@ -67,7 +67,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, AuthServiceDelegate {
     
     func authServiceSignIn() { 
         print(#function)
-        window?.rootViewController = NewsfeedViewController()
+        window?.rootViewController = UINavigationController(rootViewController: NewsfeedViewController())
     }
     
     func authServiceSignInFailed() {

@@ -12,6 +12,8 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
     
     private var newsfeedViewModel = NewsfeedViewModel(newsfeedCells: [])
     
+    private var titleView = TitleView()
+    
     private let newsfeedTableView: UITableView = {
         let view = UITableView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -40,6 +42,7 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
         super.viewDidLoad()
         view.backgroundColor = .white
         setup()
+        setupNavBar()
         view.addSubview(newsfeedTableView)
         NSLayoutConstraint.activate([
             newsfeedTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -58,6 +61,12 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
             self.newsfeedViewModel = feedViewModel
             newsfeedTableView.reloadData()
         }
+    }
+    
+    private func setupNavBar() {
+//        self.navigationController?.hidesBarsOnSwipe = true
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationItem.titleView = titleView
     }
     
     private func configureNewsfeedTableView() {

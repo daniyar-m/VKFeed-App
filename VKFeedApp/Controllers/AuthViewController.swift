@@ -4,7 +4,7 @@ import UIKit
 
 final class AuthViewController: UIViewController {
     
-    private var authService: AuthService!
+    private var authService: AuthService?
     
     private lazy var loginButton: UIButton = {
         let view = UIButton()
