@@ -81,7 +81,7 @@ final class NewsfeedCellLayoutCalculator: FeedCellLayoutCalculator {
                                      size: CGSize(width: cardViewWidth, height: Constants.bottomSubviewSize.height))
         
         // MARK: - Работа с bottomViewFrame
-        let totalHeight = bottomViewFrame.maxY + Constants.cardViewInsets.bottom
+        let totalHeight = bottomViewFrame.maxY + Constants.cardViewInsets.top + Constants.cardViewInsets.bottom
         
         return Sizes(postLabelFrame: postLabelFrame,
                      moreTextButtonFrame: moreTextButtonFrame,

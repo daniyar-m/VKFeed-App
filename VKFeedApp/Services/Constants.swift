@@ -3,7 +3,7 @@
 import UIKit
 
 struct Constants {
-    static let cardViewInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 12, right: 8)
+    static let cardViewInsets: UIEdgeInsets = UIEdgeInsets(top: 6, left: 8, bottom: 6, right: 8)
     
     static let topViewHeight: CGFloat = 36
     static let topViewInsets: UIEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 0, right: 8)

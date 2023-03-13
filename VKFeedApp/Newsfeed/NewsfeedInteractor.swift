@@ -3,7 +3,7 @@
 import UIKit
 
 protocol NewsfeedBusinessLogic {
-    func doSomething(request: Newsfeed.Model.Request.RequestType)
+    func makeRequest(_ request: Newsfeed.Model.Request.RequestType)
 }
 
 protocol NewsfeedDataStore {
@@ -13,17 +13,24 @@ protocol NewsfeedDataStore {
 class NewsfeedInteractor: NewsfeedBusinessLogic, NewsfeedDataStore {
     var presenter: NewsfeedPresentationLogic?
     var worker: NewsfeedWorker?
-    private var fetcher: DataFetcher = NetworkDataFetcher(DefaultNetworkingService())
+    private var fetcher: DataFetcher = DefaultDataFetcher(DefaultNetworkingService())
     private var revealedPostIDs: [Int] = []
     private var feedResponse: FeedResponse?
+    private var userResponse: UserResponse?
     
-    func doSomething(request: Newsfeed.Model.Request.RequestType) {
+    func makeRequest(_ request: Newsfeed.Model.Request.RequestType) {
         switch request {
         case .getNewsfeed:
             print(".getNewsfeed Interactor")
             fetcher.getFeed { [weak self] feedResponse in
                 self?.feedResponse = feedResponse
                 self?.presentFeed()
+            }
+        case .getUser:
+            print(".getUser Interactor")
+            fetcher.getUser { [weak self] userResponse in
+                self?.userResponse = userResponse 
+                self?.presenter?.presentData(.presentUserInfo(user: userResponse))
             }
         case .revealPostIDs(let id):
             revealedPostIDs.append(id)
@@ -33,6 +40,6 @@ class NewsfeedInteractor: NewsfeedBusinessLogic, NewsfeedDataStore {
     
     private func presentFeed() {
         guard let feedResponse else { return }
-        presenter?.presentSomething(response: .presentNewsfeed(feed: feedResponse, revealedPostIDs: revealedPostIDs))
+        presenter?.presentData(.presentNewsfeed(feed: feedResponse, revealedPostIDs: revealedPostIDs))
     }
 }

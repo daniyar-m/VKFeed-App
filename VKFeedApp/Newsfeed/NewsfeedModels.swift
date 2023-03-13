@@ -10,6 +10,7 @@ enum Newsfeed {
         struct Request {
             enum RequestType {
                 case getNewsfeed
+                case getUser
                 case revealPostIDs(id: Int)
             }
         }
@@ -17,15 +18,21 @@ enum Newsfeed {
         struct Response {
             enum ResponseType {
                 case presentNewsfeed(feed: FeedResponse, revealedPostIDs: [Int])
+                case presentUserInfo(user: UserResponse?)
             }
         }
         
         struct ViewModel {
             enum ViewModelData {
                 case displayNewsfeed(_ feedViewModel: NewsfeedViewModel)
+                case displayUser(_ userViewModel: UserViewModel)
             }
         }
     }
+}
+
+struct UserViewModel: TitleViewViewModel {
+    var photo100UrlString: String?
 }
 
 struct NewsfeedViewModel {

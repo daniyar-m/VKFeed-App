@@ -2,6 +2,10 @@
 
 import UIKit
 
+protocol TitleViewViewModel {
+    var photo100UrlString: String? { get }
+}
+
 final class TitleView: UIView {
     
     private var mySearchTextField = CustomTextField()
@@ -33,6 +37,10 @@ final class TitleView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         avatarImageView.layer.cornerRadius = avatarImageView.frame.width / 2
+    }
+    
+    func fill(with viewModel: TitleViewViewModel) {
+        avatarImageView.set(imageUrl: viewModel.photo100UrlString)
     }
     
     private func setupConstaints() {

@@ -38,7 +38,7 @@ final class DefaultNetworkingService: NetworkingService {
         var components = URLComponents()
         components.scheme = API.scheme
         components.host = API.host
-        components.path = API.newsFeed
+        components.path = path
         components.queryItems = params.map { URLQueryItem(name: $0, value: $1) }
         return components.url
     }

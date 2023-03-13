@@ -3,7 +3,7 @@
 import UIKit
 
 protocol NewsfeedPresentationLogic {
-    func presentSomething(response: Newsfeed.Model.Response.ResponseType)
+    func presentData(_ data: Newsfeed.Model.Response.ResponseType)
 }
 
 class NewsfeedPresenter: NewsfeedPresentationLogic {
@@ -19,16 +19,20 @@ class NewsfeedPresenter: NewsfeedPresentationLogic {
         return dt
     }()
     
-    func presentSomething(response: Newsfeed.Model.Response.ResponseType) {
-        switch response {
-        case .presentNewsfeed(let feedResponse, let revealedPostIDs):
+    func presentData(_ data: Newsfeed.Model.Response.ResponseType) {
+        switch data {
+        case .presentNewsfeed(let feed, let revealedPostIDs):
             print(".presentNewsfeed Presenter")
-            let cells = feedResponse.items.map { cellViewModel(from: $0,
-                                                               profiles: feedResponse.profiles,
-                                                               groups: feedResponse.groups,
+            let cells = feed.items.map { cellViewModel(from: $0,
+                                                               profiles: feed.profiles,
+                                                               groups: feed.groups,
                                                                revealedPostIDs: revealedPostIDs) }
             let feedViewModel = NewsfeedViewModel(newsfeedCells: cells)
-            viewController?.displaySomething(viewModel: .displayNewsfeed(feedViewModel))
+            viewController?.displayData(.displayNewsfeed(feedViewModel))
+        case .presentUserInfo(let user):
+            print(".presentUserInfo Presenter")
+            let userViewModel = UserViewModel(photo100UrlString: user?.photo100)
+            viewController?.displayData(.displayUser(userViewModel))
         }
     }
      

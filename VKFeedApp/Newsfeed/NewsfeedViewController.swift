@@ -3,7 +3,7 @@
 import UIKit
 
 protocol NewsfeedDisplayLogic: AnyObject {
-    func displaySomething(viewModel: Newsfeed.Model.ViewModel.ViewModelData)
+    func displayData(_ viewModel: Newsfeed.Model.ViewModel.ViewModelData)
 }
 
 class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
@@ -13,7 +13,6 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
     private var newsfeedViewModel = NewsfeedViewModel(newsfeedCells: [])
     
     private var titleView = TitleView()
-    
     private let newsfeedTableView: UITableView = {
         let view = UITableView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -51,15 +50,19 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
             newsfeedTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
         configureNewsfeedTableView()
-        interactor?.doSomething(request: .getNewsfeed)
+        interactor?.makeRequest(.getNewsfeed)
+        interactor?.makeRequest(.getUser)
     }
         
-    func displaySomething(viewModel: Newsfeed.Model.ViewModel.ViewModelData) {
+    func displayData(_ viewModel: Newsfeed.Model.ViewModel.ViewModelData) {
         switch viewModel {
         case .displayNewsfeed(let feedViewModel):
             print(".displayNewsfeed ViewController")
             self.newsfeedViewModel = feedViewModel
             newsfeedTableView.reloadData()
+        case .displayUser(let userViewModel):
+            print(".displayUser ViewController")
+            titleView.fill(with: userViewModel)
         }
     }
     
@@ -103,6 +106,6 @@ extension NewsfeedViewController: NewsfeedCellDelegate {
     func revealPost(for cell: NewsfeedCell) {
         guard let indexPath = newsfeedTableView.indexPath(for: cell) else { return }
         let cellViewModel = newsfeedViewModel.newsfeedCells[indexPath.row]
-        interactor?.doSomething(request: .revealPostIDs(id: cellViewModel.postId))
+        interactor?.makeRequest(.revealPostIDs(id: cellViewModel.postId))
     }
 }
