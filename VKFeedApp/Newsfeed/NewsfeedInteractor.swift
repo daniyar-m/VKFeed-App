@@ -3,14 +3,14 @@
 import UIKit
 
 protocol NewsfeedBusinessLogic {
-    func makeRequest(_ request: Newsfeed.Model.Request.RequestType)
+    func makeRequest(_ request: Newsfeed.Request)
 }
 
 protocol NewsfeedDataStore {
         //var name: String { get set }
 }
 
-class NewsfeedInteractor: NewsfeedBusinessLogic, NewsfeedDataStore {
+final class NewsfeedInteractor: NewsfeedBusinessLogic, NewsfeedDataStore {
     var presenter: NewsfeedPresentationLogic?
     var worker: NewsfeedWorker?
     private var fetcher: DataFetcher = DefaultDataFetcher(DefaultNetworkingService())
@@ -18,7 +18,7 @@ class NewsfeedInteractor: NewsfeedBusinessLogic, NewsfeedDataStore {
     private var feedResponse: FeedResponse?
     private var userResponse: UserResponse?
     
-    func makeRequest(_ request: Newsfeed.Model.Request.RequestType) {
+    func makeRequest(_ request: Newsfeed.Request) {
         switch request {
         case .getNewsfeed:
             print(".getNewsfeed Interactor")
@@ -30,7 +30,7 @@ class NewsfeedInteractor: NewsfeedBusinessLogic, NewsfeedDataStore {
             print(".getUser Interactor")
             fetcher.getUser { [weak self] userResponse in
                 self?.userResponse = userResponse 
-                self?.presenter?.presentData(.presentUserInfo(user: userResponse))
+                self?.presenter?.presentData(.presentUser(user: userResponse))
             }
         case .revealPostIDs(let id):
             revealedPostIDs.append(id)

@@ -100,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				5C24AA99299A34F000CA4646 /* AuthViewController.swift */,
+				5C572A00299E735600F4E61F /* NewsfeedViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -138,7 +139,6 @@
 		5C5729FB299E730500F4E61F /* Newsfeed */ = {
 			isa = PBXGroup;
 			children = (
-				5C572A00299E735600F4E61F /* NewsfeedViewController.swift */,
 				5C572A01299E735600F4E61F /* NewsfeedInteractor.swift */,
 				5C5729FC299E735600F4E61F /* NewsfeedPresenter.swift */,
 				5C5729FF299E735600F4E61F /* NewsfeedModels.swift */,

@@ -3,10 +3,10 @@
 import UIKit
 
 protocol NewsfeedDisplayLogic: AnyObject {
-    func displayData(_ viewModel: Newsfeed.Model.ViewModel.ViewModelData)
+    func displayData(_ viewModel: Newsfeed.ViewModel)
 }
 
-class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
+final class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
     var interactor: NewsfeedBusinessLogic?
     var router: (NSObjectProtocol & NewsfeedRoutingLogic & NewsfeedDataPassing)?
     
@@ -54,7 +54,7 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
         interactor?.makeRequest(.getUser)
     }
         
-    func displayData(_ viewModel: Newsfeed.Model.ViewModel.ViewModelData) {
+    func displayData(_ viewModel: Newsfeed.ViewModel) {
         switch viewModel {
         case .displayNewsfeed(let feedViewModel):
             print(".displayNewsfeed ViewController")
