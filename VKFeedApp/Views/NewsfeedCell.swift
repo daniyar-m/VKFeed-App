@@ -61,9 +61,15 @@ final class NewsfeedCell: UITableViewCell {
         return view
     }()
     
-    private let postLabel: UILabel = {
-        let view = UILabel()
-        view.numberOfLines = 0
+    private let postTextView: UITextView = {
+        let view = UITextView()
+        view.isScrollEnabled = false
+        view.isSelectable = true
+        view.isUserInteractionEnabled = true
+        view.isEditable = false
+        view.dataDetectorTypes = .all
+        let padding = view.textContainer.lineFragmentPadding
+        view.textContainerInset = UIEdgeInsets(top: 0, left: -padding, bottom: 0, right: -padding)
         view.font = Constants.postLabelFont
         view.textColor = .black
         return view
@@ -241,13 +247,13 @@ final class NewsfeedCell: UITableViewCell {
         avatarImageView.set(imageUrl: viewModel.avatarUrlString)
         nameLabel.text = viewModel.name
         dateLabel.text = viewModel.date
-        postLabel.text = viewModel.text
+        postTextView.text = viewModel.text
         likesLabel.text = viewModel.likes
         commentsLabel.text = viewModel.comments
         repostsLabel.text = viewModel.reposts
         viewsLabel.text = viewModel.views
         
-        postLabel.frame = viewModel.sizes.postLabelFrame
+        postTextView.frame = viewModel.sizes.postLabelFrame
         moreTextButton.frame = viewModel.sizes.moreTextButtonFrame
         bottomView.frame = viewModel.sizes.bottomViewFrame
         
@@ -284,7 +290,7 @@ final class NewsfeedCell: UITableViewCell {
     
     private func layoutSecondLayerSubviews() {
         cardView.addSubview(topView)
-        cardView.addSubview(postLabel)
+        cardView.addSubview(postTextView)
         cardView.addSubview(moreTextButton)
         cardView.addSubview(postImageView)
         cardView.addSubview(galleryCollectionView)

@@ -12,7 +12,14 @@ final class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
     
     private var newsfeedViewModel = NewsfeedViewModel(newsfeedCells: [])
     
-    private var titleView = TitleView()
+    private let titleView = TitleView()
+    
+    private lazy var refreshControl: UIRefreshControl = {
+        let view = UIRefreshControl()
+        view.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        return view
+    }()
+    
     private let newsfeedTableView: UITableView = {
         let view = UITableView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -40,16 +47,11 @@ final class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        
         setup()
         setupNavBar()
-        view.addSubview(newsfeedTableView)
-        NSLayoutConstraint.activate([
-            newsfeedTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            newsfeedTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            newsfeedTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            newsfeedTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-        ])
-        configureNewsfeedTableView()
+        setupNewsfeedTableView()
+        
         interactor?.makeRequest(.getNewsfeed)
         interactor?.makeRequest(.getUser)
     }
@@ -60,6 +62,7 @@ final class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
             print(".displayNewsfeed ViewController")
             self.newsfeedViewModel = feedViewModel
             newsfeedTableView.reloadData()
+            refreshControl.endRefreshing()
         case .displayUser(let userViewModel):
             print(".displayUser ViewController")
             titleView.fill(with: userViewModel)
@@ -72,11 +75,26 @@ final class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
         self.navigationItem.titleView = titleView
     }
     
-    private func configureNewsfeedTableView() {
+    private func setupNewsfeedTableView() {
+        view.addSubview(newsfeedTableView)
+        newsfeedTableView.addSubview(refreshControl)
+        newsfeedTableView.contentInset = Constants.newsfeedtableViewInsets
+        newsfeedTableView.separatorStyle = .none
+        
+        NSLayoutConstraint.activate([
+            newsfeedTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            newsfeedTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            newsfeedTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            newsfeedTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
+        
         newsfeedTableView.delegate = self
         newsfeedTableView.dataSource = self
         newsfeedTableView.register(NewsfeedCell.self, forCellReuseIdentifier: NewsfeedCell.identifier)
-        newsfeedTableView.separatorStyle = .none
+    }
+    
+    @objc private func refresh() {
+        interactor?.makeRequest(.getNewsfeed )
     }
 }
 
