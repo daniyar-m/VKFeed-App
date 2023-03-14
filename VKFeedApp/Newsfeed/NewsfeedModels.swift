@@ -6,7 +6,8 @@ enum Newsfeed {
     enum Request {
         case getNewsfeed
         case getUser
-        case revealPostIDs(id: Int)
+        case revealPostIDs(_ id: Int)
+        case getNextBatch
     }
     
     enum Response {

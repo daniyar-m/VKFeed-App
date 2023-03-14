@@ -17,15 +17,15 @@ import UIKit
   //func routeToSomewhere(segue: UIStoryboardSegue?)
 }
 
-protocol NewsfeedDataPassing
-{
-  var dataStore: NewsfeedDataStore? { get }
-}
+//protocol NewsfeedDataPassing
+//{
+//  var dataStore: NewsfeedDataStore? { get }
+//}
 
-class NewsfeedRouter: NSObject, NewsfeedRoutingLogic, NewsfeedDataPassing
+class NewsfeedRouter: NSObject, NewsfeedRoutingLogic
 {
   weak var viewController: NewsfeedViewController?
-  var dataStore: NewsfeedDataStore?
+//  var dataStore: NewsfeedDataStore?
   
   // MARK: Routing
   

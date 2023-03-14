@@ -3,7 +3,7 @@
 import Foundation
 
 protocol DataFetcher {
-    func getFeed(response: @escaping (FeedResponse?) -> Void)
+    func getFeed(nextBatchFrom: String?, response: @escaping (FeedResponse?) -> Void)
     func getUser(response: @escaping (UserResponse?) -> Void)
 }
 
@@ -12,13 +12,14 @@ struct DefaultDataFetcher: DataFetcher {
     private let authService: AuthService
     private let defaultNetworkingService: NetworkingService
     
-    init(authService: AuthService = SceneDelegate.shared().authService, _ networkingService: NetworkingService) {
+    init(authService: AuthService = SceneDelegate.shared().authService, networkingService: NetworkingService) {
         self.authService = authService
         self.defaultNetworkingService = networkingService
     }
     
-    func getFeed(response: @escaping (FeedResponse?) -> Void) {
-        let params = ["filters": "post,photo"]
+    func getFeed(nextBatchFrom: String?, response: @escaping (FeedResponse?) -> Void) {
+        var params = ["filters": "post,photo"]
+        params["start_from"] = nextBatchFrom
         defaultNetworkingService.request(path: API.newsFeed, params: params) { data, error in
             if let error {
                 print("Received error while requesting data: \(error.localizedDescription)")

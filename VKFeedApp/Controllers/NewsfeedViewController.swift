@@ -8,7 +8,6 @@ protocol NewsfeedDisplayLogic: AnyObject {
 
 final class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
     var interactor: NewsfeedBusinessLogic?
-    var router: (NSObjectProtocol & NewsfeedRoutingLogic & NewsfeedDataPassing)?
     
     private var newsfeedViewModel = NewsfeedViewModel(newsfeedCells: [])
     
@@ -35,11 +34,9 @@ final class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
         let presenter = NewsfeedPresenter()
         let router = NewsfeedRouter()
         viewController.interactor = interactor
-        viewController.router = router
         interactor.presenter = presenter
         presenter.viewController = viewController
         router.viewController = viewController
-        router.dataStore = interactor
     }
     
 // MARK: - View lifecycle
@@ -118,12 +115,18 @@ extension NewsfeedViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return newsfeedViewModel.newsfeedCells[indexPath.row].sizes.totalHeight
     }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if scrollView.contentOffset.y > scrollView.contentSize.height / 1.1 {
+            interactor?.makeRequest(.getNextBatch)
+        }
+    }
 }
 
 extension NewsfeedViewController: NewsfeedCellDelegate {
     func revealPost(for cell: NewsfeedCell) {
         guard let indexPath = newsfeedTableView.indexPath(for: cell) else { return }
         let cellViewModel = newsfeedViewModel.newsfeedCells[indexPath.row]
-        interactor?.makeRequest(.revealPostIDs(id: cellViewModel.postId))
+        interactor?.makeRequest(.revealPostIDs(cellViewModel.postId))
     }
 }
