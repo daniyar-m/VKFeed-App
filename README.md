@@ -1,4 +1,4 @@
-# VKFeed-App
+# VKFeed iOS app
 iOS app for VK API newsfeed.
 
 - Clean Swift architecture
