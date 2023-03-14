@@ -33,6 +33,8 @@ final class NewsfeedPresenter: NewsfeedPresentationLogic {
             print(".presentUser Presenter")
             let userViewModel = UserViewModel(photo100UrlString: user?.photo100)
             viewController?.displayData(.displayUser(userViewModel))
+        case .presentFooterLoader:
+            viewController?.displayData(.displayFooterLoader)
         }
     }
      

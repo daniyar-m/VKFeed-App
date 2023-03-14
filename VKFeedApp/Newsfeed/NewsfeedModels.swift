@@ -13,11 +13,13 @@ enum Newsfeed {
     enum Response {
         case presentNewsfeed(feed: FeedResponse, revealedPostIDs: [Int])
         case presentUser(user: UserResponse?)
+        case presentFooterLoader
     }
     
     enum ViewModel {
         case displayNewsfeed(_ feedViewModel: NewsfeedViewModel)
         case displayUser(_ userViewModel: UserViewModel)
+        case displayFooterLoader
     }
 }
 

@@ -12,6 +12,7 @@ final class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
     private var newsfeedViewModel = NewsfeedViewModel(newsfeedCells: [])
     
     private let titleView = TitleView()
+    private lazy var footerView = FooterView()
     
     private lazy var refreshControl: UIRefreshControl = {
         let view = UIRefreshControl()
@@ -60,9 +61,12 @@ final class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
             self.newsfeedViewModel = feedViewModel
             newsfeedTableView.reloadData()
             refreshControl.endRefreshing()
+            footerView.setTitle(String(feedViewModel.newsfeedCells.count) + " постов")
         case .displayUser(let userViewModel):
             print(".displayUser ViewController")
             titleView.fill(with: userViewModel)
+        case .displayFooterLoader:
+            footerView.showLoader()
         }
     }
     
@@ -75,6 +79,7 @@ final class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
     private func setupNewsfeedTableView() {
         view.addSubview(newsfeedTableView)
         newsfeedTableView.addSubview(refreshControl)
+        newsfeedTableView.tableFooterView = footerView
         newsfeedTableView.contentInset = Constants.newsfeedtableViewInsets
         newsfeedTableView.separatorStyle = .none
         
