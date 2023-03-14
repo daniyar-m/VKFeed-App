@@ -20,7 +20,6 @@
 		5C3DA2F12996981100449A18 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3DA2F02996981100449A18 /* AuthService.swift */; };
 		5C572A02299E735600F4E61F /* NewsfeedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5729FC299E735600F4E61F /* NewsfeedPresenter.swift */; };
 		5C572A03299E735600F4E61F /* NewsfeedWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5729FD299E735600F4E61F /* NewsfeedWorker.swift */; };
-		5C572A04299E735600F4E61F /* NewsfeedRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5729FE299E735600F4E61F /* NewsfeedRouter.swift */; };
 		5C572A05299E735600F4E61F /* NewsfeedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5729FF299E735600F4E61F /* NewsfeedModels.swift */; };
 		5C572A06299E735600F4E61F /* NewsfeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C572A00299E735600F4E61F /* NewsfeedViewController.swift */; };
 		5C572A07299E735600F4E61F /* NewsfeedInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C572A01299E735600F4E61F /* NewsfeedInteractor.swift */; };
@@ -54,7 +53,6 @@
 		5C3DA2F02996981100449A18 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		5C5729FC299E735600F4E61F /* NewsfeedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedPresenter.swift; sourceTree = "<group>"; };
 		5C5729FD299E735600F4E61F /* NewsfeedWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedWorker.swift; sourceTree = "<group>"; };
-		5C5729FE299E735600F4E61F /* NewsfeedRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedRouter.swift; sourceTree = "<group>"; };
 		5C5729FF299E735600F4E61F /* NewsfeedModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedModels.swift; sourceTree = "<group>"; };
 		5C572A00299E735600F4E61F /* NewsfeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedViewController.swift; sourceTree = "<group>"; };
 		5C572A01299E735600F4E61F /* NewsfeedInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedInteractor.swift; sourceTree = "<group>"; };
@@ -146,7 +144,6 @@
 				5C5729FC299E735600F4E61F /* NewsfeedPresenter.swift */,
 				5C5729FF299E735600F4E61F /* NewsfeedModels.swift */,
 				5C5729FD299E735600F4E61F /* NewsfeedWorker.swift */,
-				5C5729FE299E735600F4E61F /* NewsfeedRouter.swift */,
 			);
 			path = Newsfeed;
 			sourceTree = "<group>";
@@ -319,7 +316,6 @@
 				5C24AAA5299E504200CA4646 /* DefaultDataFetcher.swift in Sources */,
 				5C24AA9A299A34F000CA4646 /* AuthViewController.swift in Sources */,
 				5C572A06299E735600F4E61F /* NewsfeedViewController.swift in Sources */,
-				5C572A04299E735600F4E61F /* NewsfeedRouter.swift in Sources */,
 				5C572A03299E735600F4E61F /* NewsfeedWorker.swift in Sources */,
 				5C14506129BF19EB00F5B5AA /* UserResponse.swift in Sources */,
 				5C14506329C09F3600F5B5AA /* FooterView.swift in Sources */,

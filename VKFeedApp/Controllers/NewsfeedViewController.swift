@@ -33,11 +33,9 @@ final class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
         let viewController = self
         let interactor = NewsfeedInteractor()
         let presenter = NewsfeedPresenter()
-        let router = NewsfeedRouter()
         viewController.interactor = interactor
         interactor.presenter = presenter
         presenter.viewController = viewController
-        router.viewController = viewController
     }
     
 // MARK: - View lifecycle
@@ -71,7 +69,7 @@ final class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
     }
     
     private func setupNavBar() {
-//        self.navigationController?.hidesBarsOnSwipe = true
+        self.navigationController?.hidesBarsOnSwipe = true
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationItem.titleView = titleView
     }
